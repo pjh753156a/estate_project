@@ -1,4 +1,5 @@
--- Active: 1707870176406@@127.0.0.1@3306@estate
+-- Active: 1713918465438@@127.0.0.1@3306@estate
+
 # Entity
 # - 사용자
 # - 이메일 인증번호
@@ -79,4 +80,9 @@ CREATE TABLE board (
     CONSTRAINT writer_id_fk
         FOREIGN KEY (writer_id) REFERENCES user(user_id)
 );
-##!!!복습완료
+
+## 개발자 계정 생성
+CREATE USER 'developer'@'%' IDENTIFIED BY 'P!ssw0rd';
+GRANT ALL PRIVILEGES ON estate.* TO 'developer'@'%';
+
+## !!!복습완료
