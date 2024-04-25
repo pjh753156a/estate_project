@@ -10,6 +10,9 @@ import com.estate.back.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, String>
 {
     boolean existsByUserId(String userId);
+
+    boolean existsByUserEmail(String userEmail);
+
     UserEntity findByUserId(String userId);
 }
-//????
+//!!!복습완료

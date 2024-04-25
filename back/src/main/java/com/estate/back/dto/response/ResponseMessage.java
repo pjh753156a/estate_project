@@ -23,3 +23,4 @@ public interface ResponseMessage
     String MAIL_SEND_FAILED="Mail send Failed.";
     String DATABASE_ERROR="Database Error.";
 }
+ //!!!복습완료

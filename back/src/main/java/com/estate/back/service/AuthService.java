@@ -8,13 +8,15 @@ import com.estate.back.dto.request.auth.SignInRequestDto;
 import com.estate.back.dto.request.auth.SignUpRequestDto;
 import com.estate.back.dto.request.auth.idCheckRequestDto;
 import com.estate.back.dto.response.ResponseDto;
+import com.estate.back.dto.response.auth.SignInResponseDto;
 
 public interface AuthService 
 {
-    ResponseEntity<? super SignInRequestDto> signIn (SignInRequestDto dto);
+    ResponseEntity<? super SignInResponseDto> signIn (SignInRequestDto dto);
     ResponseEntity<ResponseDto> idCheck(idCheckRequestDto dto);
     ResponseEntity<ResponseDto> emailAuth(EmailAuthRequestDto dto);
     ResponseEntity<ResponseDto> emailAuthCheck(EmailAuthCheckRequestDto dto);
     ResponseEntity<ResponseDto> signUp(SignUpRequestDto dto);
 
 }
+//!!!복습완료
