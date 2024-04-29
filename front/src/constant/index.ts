@@ -1,4 +1,5 @@
 // description : Navigation URL PATH
+export const SNS_PATH = '/sns/:accessToken/:expires';
 export const AUTH_PATH = '/authentication';
 export const SERVICE_PATH = '/service';
 export const LOCAL_PATH = 'local';
@@ -7,7 +8,6 @@ export const QNA_PATH = 'qna';
 export const QNA_WRITE_PATH = 'write';
 export const QNA_DEATIL_PATH = ':boardNumber';
 export const QNA_UPDATE_PATH = 'update/:receptionNumber';
-// !!!복습완료
 
 // description : Navigation 절대 URL PATH
 export const AUTH_ABSOLUTE_PATH = AUTH_PATH;

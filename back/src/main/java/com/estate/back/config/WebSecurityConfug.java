@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HttpBasicConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -15,6 +16,8 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.estate.back.filter.JwtAuthenticationFilter;
+import com.estate.back.handler.OAuth2SuccessHandler;
+import com.estate.back.service.implimentation.OAuth2UserSerivceImplementation;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,6 +34,10 @@ import lombok.RequiredArgsConstructor;
 public class WebSecurityConfug 
 {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    //???
+    private final OAuth2UserSerivceImplementation oAuth2UserService;
+    private final OAuth2SuccessHandler oAuth2SuccessHandler;
+    //???
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception
@@ -44,6 +51,14 @@ public class WebSecurityConfug
             .cors(cors -> cors
             .configurationSource(corsConfigurationSource())
             )
+            //???
+            .oauth2Login(oauth2 -> oauth2
+                .authorizationEndpoint(endpoint -> endpoint.baseUri("/api/vi/auth/oauth2"))
+                .redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/*"))
+                .userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService))
+                .successHandler(oAuth2SuccessHandler)
+            )
+            //???
             .addFilterBefore(jwtAuthenticationFilter,
             UsernamePasswordAuthenticationFilter.class);
 
@@ -65,4 +80,3 @@ public class WebSecurityConfug
         return source;
     }
 }
-//!!!복습완료

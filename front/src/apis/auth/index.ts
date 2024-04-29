@@ -32,6 +32,7 @@ export const emailAuthRequest = async (requestBody :EmailAuthRequestDto) =>
     return result;
 };
 
+// !!!복습시작
 // function: 이메일 인증 확인 API 함수
 export const emailAuthCheckRequest = async(requestBody:EmailAuthCheckRequestDto) =>
 {
@@ -40,7 +41,9 @@ export const emailAuthCheckRequest = async(requestBody:EmailAuthCheckRequestDto)
         .catch(requestErrorHandler)
     return result;
 };
+//!!!복습완료
 
+//!!!복습시작
 // function: 회원가입 API 함수
 export const signUpRequest = async(requestBody : SignUpRequestDto) => 
 {
@@ -49,3 +52,4 @@ export const signUpRequest = async(requestBody : SignUpRequestDto) =>
         .catch(requestErrorHandler)
     return result;
 }
+//!!!복습완료
