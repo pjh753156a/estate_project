@@ -32,4 +32,3 @@ export interface SignUpRequestDto
     userEmail: string;
     authNumber: string;
 }
-// !!!복습완료

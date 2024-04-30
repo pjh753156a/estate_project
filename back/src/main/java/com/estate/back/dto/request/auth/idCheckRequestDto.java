@@ -15,4 +15,4 @@ public class idCheckRequestDto
     @NotBlank 
     private String userId;
 }
- //!!!복습완료
+//!!!복습완료

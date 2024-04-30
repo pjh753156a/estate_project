@@ -7,4 +7,3 @@ export default function NotFound()
     <div>NotFound</div>
   )
 }
-//!!!복습완료   

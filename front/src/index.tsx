@@ -14,4 +14,3 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-// !!!복습완료

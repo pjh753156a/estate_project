@@ -17,4 +17,4 @@ public class EmailAuthCheckRequestDto
     @NotBlank
     private String authNumber;
 }
- //!!!복습완료
+//!!!복습완료

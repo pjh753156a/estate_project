@@ -9,4 +9,4 @@ public interface BoardRepository extends JpaRepository<BoardEntity,Integer>
 {
 
 }
- //!!!복습완료
+//!!!복습완료

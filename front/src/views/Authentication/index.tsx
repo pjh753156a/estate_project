@@ -12,7 +12,6 @@ import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router";
 import { LOCAL_ABSOLUTE_PATH } from "src/constant";
 
-//???
 export function Sns()
 {
     const {accessToken,expires} = useParams();
@@ -28,7 +27,6 @@ export function Sns()
     navigator(LOCAL_ABSOLUTE_PATH);
     return <></>
 }
-//???
 
 //                    type                    //
 type AuthPage = 'sign-in' | 'sign-up';
@@ -41,7 +39,6 @@ interface SnsContainerProps {
 //                    component                    //
 function SnsContainer({ title }: SnsContainerProps) {
 
-    //???
     //                    event handler                    //
     const onSnsButtonClickHandler = (type: 'kakao' | 'naver') => {
         window.location.href = 'http://localhost:4000/api/vi/auth/oauth2/' + type;
@@ -58,7 +55,6 @@ function SnsContainer({ title }: SnsContainerProps) {
         </div>
     );
 }
-//???
 
 //                    interface                    //
 interface Props {
@@ -79,8 +75,6 @@ function SignIn({ onLinkClickHandler }: Props) {
     //                  function                    //
     const navigator = useNavigate();
 
-
-    //???
     const signInResponse = (result: SignInResponseDto | ResponseDto | null) => 
     {
         const message = 
@@ -105,7 +99,6 @@ function SignIn({ onLinkClickHandler }: Props) {
 
         navigator(LOCAL_ABSOLUTE_PATH);
     };
-    //???
  
     //                    event handler                    //
     const onIdChangeHandler = (event: ChangeEvent<HTMLInputElement>) => 
@@ -222,7 +215,6 @@ function SignUp({ onLinkClickHandler }: Props) {
         setEmailError(emailError);
     }
 
-     //!!!복습시작
     const emailAuthCheckResponse = (result:ResponseDto|null) => 
     {
         const authNumberMessage = 
@@ -239,9 +231,7 @@ function SignUp({ onLinkClickHandler }: Props) {
         setAuthNumberCheck(authNumberCheck);
         setAuthNumberError(authNumberError);
     };
-    //!!!복습완료
-
-    //!!!복습시작
+    
     const signUpResponse = (result: ResponseDto | null) => 
     {
         const message = 
@@ -261,7 +251,6 @@ function SignUp({ onLinkClickHandler }: Props) {
 
             onLinkClickHandler();
     };
-    //!!!복습완료
 
     //                    event handler                    //
     const onIdChangeHandler = (event: ChangeEvent<HTMLInputElement>) => 
@@ -352,7 +341,6 @@ function SignUp({ onLinkClickHandler }: Props) {
 
     const onAuthNumberButtonClickHandler = () => {
         if(!authNumberButtonStatus) return;
-        //복습시작!!!!
         if(!authNumber) return;
 
         const requestBody: EmailAuthCheckRequestDto = {
@@ -361,13 +349,10 @@ function SignUp({ onLinkClickHandler }: Props) {
         };
         emailAuthCheckRequest(requestBody).then(emailAuthCheckResponse);
     }
-    //!!!복습완료
-
 
     const onSignUpButtonClickHandler = () => 
     {
         if(!isSignUpActive) return;
-        //!!!복습시작
         if(!id || !password || !passwordCheck || !email || !authNumber)
         {
             alert('모든 내용을 입력해주세요.');
@@ -382,7 +367,6 @@ function SignUp({ onLinkClickHandler }: Props) {
         }
         signUpRequest(requestBody).then(signUpResponse);
     };
-    //!!!복습완료
 
     //                    render                    //
     return (

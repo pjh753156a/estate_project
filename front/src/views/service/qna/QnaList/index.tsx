@@ -7,4 +7,3 @@ export default function QnaList()
     <div>QnaList</div>
   )
 }
-//!!!복습완료

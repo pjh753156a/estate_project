@@ -54,7 +54,6 @@ public class AuthServiceimplimentation implements AuthService
         return ResponseDto.success();
     }
 
-    // !!!복습완료
     @Override
     public ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto) 
     {
@@ -82,9 +81,7 @@ public class AuthServiceimplimentation implements AuthService
 
         return SignInResponseDto.success(accessToken);
     }
-    //!!!복습완료
 
-    //!!!복습완료
     @Override
     public ResponseEntity<ResponseDto> emailAuth(EmailAuthRequestDto dto) 
     {
@@ -173,6 +170,6 @@ public class AuthServiceimplimentation implements AuthService
 
         return ResponseDto.success();
     }
-    // !!!복습완료    
+
 }
- //!!!복습완료
+//!!!복습완료

@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 // Response의 공통 형태
 @Getter
 @AllArgsConstructor
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class ResponseDto 
 {
     private String code;
@@ -79,4 +79,4 @@ public class ResponseDto
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseBody);
     }
 }
- //!!!복습완료
+//!!!복습완료

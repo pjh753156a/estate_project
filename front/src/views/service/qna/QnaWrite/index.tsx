@@ -7,4 +7,3 @@ export default function  QnaWrite()
     <div>QnaWrite</div>
   )
 }
- //!!!복습완료

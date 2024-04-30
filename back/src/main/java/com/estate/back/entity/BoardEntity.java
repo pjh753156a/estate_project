@@ -30,4 +30,4 @@ public class BoardEntity
     private Integer viewCount;
     private String comment;
 }
- //!!!복습완료
+//!!!복습완료
