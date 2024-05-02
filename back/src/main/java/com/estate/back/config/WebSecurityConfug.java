@@ -57,23 +57,24 @@ public class WebSecurityConfug
             .cors(cors -> cors
             .configurationSource(corsConfigurationSource())
             )
-            //!!!복습시작
+           //???
             .authorizeHttpRequests(request -> request
                 .requestMatchers("/","/api/vi/auth/***","/oauth2/callback/*").permitAll()
+                .requestMatchers("api/vi/board/").hasRole("USER")
                 .anyRequest().authenticated()
             )
-            //!!!복습완료
-            .oauth2Login(oauth2 -> oauth2
+            //???
+                .oauth2Login(oauth2 -> oauth2
                 .authorizationEndpoint(endpoint -> endpoint.baseUri("/api/vi/auth/oauth2"))
                 .redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/*"))
                 .userInfoEndpoint(endpoint -> endpoint.userService(oAuth2UserService))
                 .successHandler(oAuth2SuccessHandler)
             )
-            //???
+        
             .exceptionHandling(exception -> exception
                 .authenticationEntryPoint(new AuthorizationFailEntryPoint())
             )
-            //???
+          
             .addFilterBefore(jwtAuthenticationFilter,
             UsernamePasswordAuthenticationFilter.class);
 
@@ -95,9 +96,7 @@ public class WebSecurityConfug
         return source;
     }
 }
-//???
 
-//???
 class AuthorizationFailEntryPoint implements AuthenticationEntryPoint
 {
 
@@ -110,4 +109,3 @@ class AuthorizationFailEntryPoint implements AuthenticationEntryPoint
     }
     
 }
-//???

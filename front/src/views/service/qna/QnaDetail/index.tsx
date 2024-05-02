@@ -7,3 +7,6 @@ export default function QnaDetail()
     <div>QnaDetail</div>
   )
 }    
+/*
+//!!!복습완료
+*/

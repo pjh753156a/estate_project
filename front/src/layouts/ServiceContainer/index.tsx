@@ -7,9 +7,7 @@ import useUserStore from 'src/stores/user.store';
 import { GetSignInUserResponseDto } from 'src/apis/user/dto/response';
 import ResponseDto from 'src/apis/response.dto';
 import { getSignInUserRequest } from 'src/apis/user';
-//!!!복습완료
 
-//!!!복습시작
 type Path = '지역 평균'|'비율 계산'|'Q&A 게시판'|'';
 
 //              interface                   //
@@ -17,9 +15,7 @@ interface Props
 {
   path:Path;
 }
-//!!!복습완료
 
-//!!!복습시작
 //              component                   //
 function TopBar({path}:Props)
 {
@@ -37,7 +33,7 @@ function TopBar({path}:Props)
       navigator(AUTH_ABSOLUTE_PATH);
   };
 
-  //!!!복습시작
+  
    //            render              //
    return(
     <>
@@ -100,22 +96,24 @@ function SideNavigation({path}:Props)
 }
 
 
-//!!!복습시작
+
 //              component                   //
 export default function ServiceContainer()
 {
   //            state               //
   const {pathname} = useLocation();
-  // !!!복습완료
+  
   const { setLoginUserId, setLoginUserRole } = useUserStore();
 
-  //!!!복습시작
+  
   const [cookies] = useCookies();
   const [path,setPath] = useState<Path>('');
-  //!!!복습완료
+  
 
 
   //                    function                    //
+  const navigator = useNavigate();
+
   const getSignInUserResponse = (result: GetSignInUserResponseDto | ResponseDto | null) => {
 
     const message = 
@@ -125,6 +123,7 @@ export default function ServiceContainer()
 
     if (!result || result.code !== 'SU') {
         alert(message);
+        navigator(AUTH_ABSOLUTE_PATH);
         return;
     }
 
@@ -134,7 +133,7 @@ export default function ServiceContainer()
 
 };
 
-  //!!!복습시작
+  
   //          effect              //
   useEffect(()=>{
     const path = 
@@ -144,37 +143,31 @@ export default function ServiceContainer()
 
       setPath(path);
   },[pathname]);
-  //!!!복습완료
-
-
-
-  //!!!복습시작
+  
   useEffect(() => {
-
-    if (!cookies.accessToken) {
+    if (!cookies.accessToken) 
+    {
+        navigator(AUTH_ABSOLUTE_PATH);
         return;
     }
 
     getSignInUserRequest(cookies.accessToken).then(getSignInUserResponse);
   }, [cookies.accessToken]);
-//!!!복습완료
 
 
 
   console.log(pathname);
   // path에 대한 객체를 반환
 
-  //!!!복습시작
   //            render              //
   return (
     <div id="wrapper">
         <TopBar path={path}/>
-        //!!!복습완료
         <SideNavigation path={path}/>
         <div className="main-container">
-            <Outlet />
+        <Outlet />
         </div>
     </div>
   )
 }
-//????
+//???

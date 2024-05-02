@@ -17,7 +17,6 @@ export const requestErrorHandler = (error:any) =>
     
 };
 
-//!!!복습시작
 // function: Authorization Bearer 헤더 
 export const bearerAuthorization = (accessToken: string) => 
     ({ headers: { 'Authorization': `Bearer ${accessToken}` } });

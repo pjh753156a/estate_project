@@ -7,3 +7,6 @@ export default function Local()
     <div>Local</div>
   )
 }
+/*
+//!!!복습완료
+*/

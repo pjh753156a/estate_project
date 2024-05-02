@@ -43,12 +43,9 @@ function App()
       <Route index element={<Index/>}/>
       <Route path={SNS_PATH} element={<Sns />} />
       <Route path={AUTH_PATH} element={<Authentication />}/>
-      //복습시작
       <Route path={SERVICE_PATH} element={<ServiceContainer />} >
-        // !!!복습완료
           <Route path={LOCAL_PATH} element={<Local/>}/>
           <Route path={RATIO_PATH} element={<Ratio/>}/>
-          //???
           <Route path={QNA_PATH}>
             <Route index element={<QnaList/>} />
             <Route path={QNA_WRITE_PATH} element={<QnaWrite/>}/>
@@ -72,4 +69,7 @@ export default App;
       - :boardNumber (QnA 상세보기)
       - write (QnA 작성)
       - update/:boardNumber (QnA 수정)
+*/
+/*
+//!!!복습완료
 */

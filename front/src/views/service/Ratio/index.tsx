@@ -7,3 +7,6 @@ export default function Ratio()
     <div>Ratio</div>
   )
 }
+/*
+//!!!복습완료
+*/

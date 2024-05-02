@@ -66,12 +66,12 @@ function SignIn({ onLinkClickHandler }: Props) {
 
     //                    state                    //
     const[cookies, setCookie] = useCookies();
-
     const [id, setId] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-
     const [message, setMessage] = useState<string>('');
 
+
+    
     //                  function                    //
     const navigator = useNavigate();
 
@@ -435,3 +435,6 @@ export default function Authentication() {
         </div>
     );
 }
+/*
+//!!!복습완료
+*/
