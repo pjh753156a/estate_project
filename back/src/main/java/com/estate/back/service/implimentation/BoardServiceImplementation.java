@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.estate.back.dto.request.board.PostBoardRequestDto;
 import com.estate.back.dto.response.ResponseDto;
 import com.estate.back.dto.response.board.GetBoardListResponseDto;
+import com.estate.back.dto.response.board.GetSearchBoardListResponseDto;
 import com.estate.back.entity.BoardEntity;
 import com.estate.back.repository.BoardRepository;
 import com.estate.back.repository.UserRepository;
@@ -56,10 +57,28 @@ public class BoardServiceImplementation implements BoardService
             return ResponseDto.databaseError();
         }
     }
-}
-//???
 
-// !!!복습시작
+    //!!!복습시작
+    @Override
+    public ResponseEntity<? super GetSearchBoardListResponseDto> getSearchBoardList(String searchWord) 
+    {
+        try
+        {
+            List<BoardEntity> boardEntities = boardRepository.findByTitleContainsOrderByReceptionNumberDesc(searchWord);
+            return GetSearchBoardListResponseDto.success(boardEntities);
+        }
+        catch(Exception exception)
+        {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+    }
+    // SELECT * FROM board WHERE title LIKE '%searchWord%' ORDER BY reception_number DESC;
+    // findByTitleContainsrderByReceptionNumberDesc();
+    // GET Http://localhost:4000/api/vi/board/list/클라이언트
+    //!!!복습완료
+}
+
 // 0. 클라이언트로부터 Authorization 헤더와 Request Body를 포함하여 요청
 // 0.1 권한이 없는 사용자이면 'AF' 응답 처리 (403)
 // 0.2 유효하지 않은 데이터이면 'VF' 응답 처리 (403)
@@ -74,4 +93,3 @@ public class BoardServiceImplementation implements BoardService
 // 2.1 데이터베이스 오류가 발생하면 'DBE'응답 처리
 
 // 3. 'SU'응답 처리
-// !!!복습완료

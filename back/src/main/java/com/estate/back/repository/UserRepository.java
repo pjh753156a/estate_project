@@ -15,4 +15,3 @@ public interface UserRepository extends JpaRepository<UserEntity, String>
 
     UserEntity findByUserId(String userId);
 }
-//!!!복습완료

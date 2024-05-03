@@ -40,4 +40,3 @@ public class CustomOAuth2User implements OAuth2User
     }
 
 }
-//!!!복습완료

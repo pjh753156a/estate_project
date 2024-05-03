@@ -17,4 +17,3 @@ public class EmailAuthRequestDto
     private String userEmail;
 
 }
-//!!!복습완료

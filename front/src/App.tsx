@@ -70,6 +70,3 @@ export default App;
       - write (QnA 작성)
       - update/:boardNumber (QnA 수정)
 */
-/*
-//!!!복습완료
-*/

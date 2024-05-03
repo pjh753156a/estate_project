@@ -3,7 +3,7 @@ import { GET_SIGN_IN_USER_REQUEST_URL } from "src/constant";
 import { bearerAuthorization, requestErrorHandler, requestHandler } from "..";
 import { GetSignInUserResponseDto } from "./dto/response";
 
-//!!!복습시작
+
 // function: 로그인 유저 정보 불러오기 API 함수 
 export const getSignInUserRequest = async (accessToken: string) => {
     const result = await axios.get(GET_SIGN_IN_USER_REQUEST_URL, bearerAuthorization(accessToken))
@@ -11,4 +11,3 @@ export const getSignInUserRequest = async (accessToken: string) => {
         .catch(requestErrorHandler);
     return result;
 };
- //!!!복습완료

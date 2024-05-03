@@ -57,4 +57,3 @@ public class EmailAuthNumberUtil
         return new String(authChar);
     }
 }
-//!!!복습완료

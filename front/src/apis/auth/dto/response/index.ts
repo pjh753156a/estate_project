@@ -6,4 +6,3 @@ export interface SignInResponseDto extends ResponseDto
     accessToken: string;
     expires: number;
 }
-//!!!복습완료

@@ -435,6 +435,3 @@ export default function Authentication() {
         </div>
     );
 }
-/*
-//!!!복습완료
-*/

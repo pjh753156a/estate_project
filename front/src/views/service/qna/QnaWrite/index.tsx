@@ -7,22 +7,17 @@ import { postBoardRequest } from 'src/apis/board';
 import { PostBoardRequestDto } from 'src/apis/board/dto/request';
 import { useCookies } from 'react-cookie';
 import ResponseDto from 'src/apis/response.dto';
-// !!!복습완료
 
-// !!!복습시작
 //            component               //
 export default function  QnaWrite()
 {
-  // !!!복습시작
+  
   //                  state                     //
   const contentsRef = useRef<HTMLTextAreaElement | null>(null);
   const {loginUserRole} = useUserStore();
-  // !!!복습완료
   const [cookies] = useCookies();
-  // !!!복습시작
   const [title,setTitle] = useState<string>('');
   const [contents,setContents] = useState<string>('');
-  // !!!복습완료
 
   //                function                    //
   const navigator = useNavigate();
@@ -43,16 +38,13 @@ export default function  QnaWrite()
 
     navigator(QNA_LIST_ABSOLUTE_PATH);
   };
-
-  // !!!복습시작
+ 
   //                 event handler                //
   const onTitleChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       const title = event.target.value;
       setTitle(title);
   };
-  // !!!복습완료
-
-  // !!!복습시작
+  
   const onContentsChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
       const contents = event.target.value;
       if(contents.length>1000) return;
@@ -62,9 +54,7 @@ export default function  QnaWrite()
         contentsRef.current.style.height = 'auto';
         contentsRef.current.style.height = `${contentsRef.current.scrollHeight}px`;
   };
-  // !!!복습완료
 
-  // !!!복습시작
   const onPostButtonClickHandler = () => {
     if(!title || !contents) return;
 
@@ -74,8 +64,6 @@ export default function  QnaWrite()
     postBoardRequest(requestBody,cookies.accessToken).then(postBoardResponse);
   }
    
-  
-  // !!!복습시작
   //                effect                  //
   useEffect(() => {
     if(loginUserRole === 'ROLE_ADMIN')
@@ -84,9 +72,7 @@ export default function  QnaWrite()
       return;    
     }
   },[loginUserRole])
-  // !!!복습완료
-
-  // !!!복습시작
+  
   //                render                  //
   return (
     <div id="qna-write-wrapper">
@@ -109,4 +95,3 @@ export default function  QnaWrite()
     </div>
   )
 }
-// !!!복습완료

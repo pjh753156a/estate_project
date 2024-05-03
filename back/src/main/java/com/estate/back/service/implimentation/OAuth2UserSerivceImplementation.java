@@ -89,4 +89,3 @@ public class OAuth2UserSerivceImplementation extends DefaultOAuth2UserService
         return id;
     }
 }
-//!!!복습완료

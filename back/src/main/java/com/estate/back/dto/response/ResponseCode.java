@@ -23,4 +23,3 @@ public interface ResponseCode
     String MAIL_SEND_FAILED="MF";
     String DATABASE_ERROR="DBE";
 }
-//!!!복습완료

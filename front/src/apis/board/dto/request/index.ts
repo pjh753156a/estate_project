@@ -4,4 +4,3 @@ export interface PostBoardRequestDto
     title:string;
     contents:string;
 }
-//???

@@ -16,6 +16,3 @@ const useUserStore = create<UserStore>(set => ({
 }));
 
 export default useUserStore;
-/*
-//!!!복습완료
-*/

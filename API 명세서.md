@@ -747,4 +747,125 @@ Content-Type: application/json;charset=UTF-8
   "message": "Database Error."
 }
 ```
+
+
+
+
+//!!!복습시작
+
+#### - Q&A 검색 게시물 리스트 불러오기
+  
+##### 설명
+
+클라이언트로부터 Request Header의 Authorization 필드로 Bearer 토큰을 
+포함하여 검색어를 입력받고 요청을 보내면 작성일 기준 내림차순으로 제목에 해당 검색어가 포함된 게시물 리스트를 반환합니다. 만약 불러오기에 실패하면 실패처리를 합니다. 인가 실패, 데이터베이스 에러가 발생할 수 있습니다.
+
+
+- method : **GET**  
+- URL : **/list/{searchWord}**  
+
+##### Request
+
+###### Header
+
+| name | description | required |
+|---|:---:|:---:|
+| Authorization | 인증에 사용될 Bearer 토큰 | 0 |
+
+
+###### Path Variable
+
+| name | type | description | required |
+|---|:---:|:---:|:---:|
+| searchWord | String | 검색어 | 0 |
+
+###### Example
+```bash
+curl -v -X GET POST "http://localhost:4000/api/vi/board/list/{searchWord}" \
+ -H "Authorization: Bearer {JWT}"
+```
+
+##### Response
+
+###### Header
+
+| name | description | required |
+|---|:---:|:---:|
+| Content-Type | 반환하는 Response Body의 Content Type (application/json) | O |
+
+
+
+**BoardListItem**
+| name | type | description | required |
+|---|:---:|:---:|:---:|
+| receptionNumber | int | 접수번호 | O |
+| status | boolean | 상태 | O |
+| title | String | 제목 | 0 |
+| writerId | String | 작성자 아이디</br> (첫글자를 제외한 나머지 문자는 *) | 0 |
+| writeDatetime | String | 작성일</br> (yy.mm.dd 형태) | 0 |
+| viewCount | int | 조회수 | 0 |
+
+###### Example
+
+**응답 성공**
+```bash
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "SU",
+  "message": "Success.",
+  "boardList": [
+    {
+      "receptionNumber": 1,
+      "status": false,
+      "title": "테스트1",
+      "writerId": "AAAA",
+      "writeDatetime": "24.05.02",
+      "viewCount": 0
+    }
+  ]
+}
+```
+
+
+**응답 : 실패 (데이터 유효성 검사 실패)**
+```bash
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "VF",
+  "message": "Validation Failed."
+}
+```
+
+
+**응답 : 실패 (인가 실패)**
+```bash
+HTTP/1.1 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "AF",
+  "message": "Authorization Failed."
+}
+```
+
+**응답 : 실패 (인증 실패)**
+```bash
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "AF",
+  "message": "Authentication Failed."
+}
+```
+
+**응답 : 실패 (데이터베이스 오류)**
+```bash
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "DBE",
+  "message": "Database Error."
+}
+```
 //!!!복습완료

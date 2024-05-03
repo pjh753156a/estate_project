@@ -54,4 +54,4 @@ public class BoardListItem
         return boardList;
     }
 }
-//???
+ //!!!복습완료

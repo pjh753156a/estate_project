@@ -56,14 +56,12 @@ public class WebSecurityConfug
             )
             .cors(cors -> cors
             .configurationSource(corsConfigurationSource())
-            )
-           //???
+            )   
             .authorizeHttpRequests(request -> request
                 .requestMatchers("/","/api/vi/auth/***","/oauth2/callback/*").permitAll()
                 .requestMatchers("api/vi/board/").hasRole("USER")
                 .anyRequest().authenticated()
-            )
-            //???
+            )   
                 .oauth2Login(oauth2 -> oauth2
                 .authorizationEndpoint(endpoint -> endpoint.baseUri("/api/vi/auth/oauth2"))
                 .redirectionEndpoint(endpoint -> endpoint.baseUri("/oauth2/callback/*"))

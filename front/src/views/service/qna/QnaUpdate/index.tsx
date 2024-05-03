@@ -7,6 +7,3 @@ export default function QnaUpdate()
     <div>QnaUpdate</div>
   )
 }
-/*
-//!!!복습완료
-*/
