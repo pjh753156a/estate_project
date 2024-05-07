@@ -43,17 +43,11 @@ function ListItem ({
     );
 }
 
-//!!!복습시작
 //                    component                    //
 export default function QnaList() {
     //                    state                    //
     const {loginUserRole} = useUserStore();
-    /*
-    //!!!복습완료
-    */
-
     const [cookies] = useCookies();
-
     const [boardList, setBoardList] = useState<BoardListItem[]>([]);
     const [viewList, setViewList] = useState<BoardListItem[]>([]);
     const [totalLenght, setTotalLength] = useState<number>(0);
@@ -62,10 +56,7 @@ export default function QnaList() {
     const [pageList, setPageList] = useState<number[]>([1]);
     const [totalSection, setTotalSection] = useState<number>(1);
     const [currentSection, setCurrentSection] = useState<number>(1);
-    //!!!복습시작
     const [isToggleOn, setToggleOn] = useState<boolean>(false);
-    //!!!복습완료
-
     const [searchWord, setSearchWord] = useState<string>('');
 
     //                    function                    //
@@ -142,7 +133,6 @@ export default function QnaList() {
 
     };
 
-    //!!!복습시작
     //                    event handler                    //
     const onWriteButtonClickHandler = () => {
         if (loginUserRole !== 'ROLE_USER') return;
@@ -153,8 +143,7 @@ export default function QnaList() {
         if (loginUserRole !== 'ROLE_ADMIN') return;
         setToggleOn(!isToggleOn);
     };
-    //!!!복습완료
-
+    
     const onPageClickHandler = (page: number) => {
         setCurrentPage(page);
     };
@@ -199,12 +188,10 @@ export default function QnaList() {
         changeSection(totalPage);
     }, [currentSection]);
     
-    //!!!복습시작
+  
     //                    render                    //
     const toggleClass = isToggleOn ? 'toggle-active' : 'toggle';
-    //!!!복습완료
     const searchButtonClass = searchWord ? 'primary-button' : 'disable-button';
-    //!!!복습시작
     return (
         <div id='qna-list-wrapper'>
             <div className='qna-list-top'>
@@ -228,7 +215,6 @@ export default function QnaList() {
                     <div className='qna-list-table-write-date'>작성일</div>
                     <div className='qna-list-table-viewcount'>조회수</div>
                 </div>
-                //!!!복습완료
                 {viewList.map(item => <ListItem {...item} />)}
             </div>
             <div className='qna-list-bottom'>
@@ -254,9 +240,7 @@ export default function QnaList() {
         </div>
     );
 }
-//????
 
-//!!!복습시작
 // 결과 전체 게시물 리스트
 
 // 한 페이지 당 10개씩
@@ -280,6 +264,3 @@ export default function QnaList() {
 // 2 - 11 ~ 20   
 // 3 - 21 ~ 30
 // 4 - 31 ~ 32 31        40
-// !!!복습완료
-
-//???

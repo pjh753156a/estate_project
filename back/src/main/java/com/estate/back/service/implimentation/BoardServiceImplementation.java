@@ -6,8 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.estate.back.dto.request.board.PostBoardRequestDto;
+import com.estate.back.dto.request.board.PostCommentRequestDto;
 import com.estate.back.dto.response.ResponseDto;
 import com.estate.back.dto.response.board.GetBoardListResponseDto;
+import com.estate.back.dto.response.board.GetBoardResponseDto;
 import com.estate.back.dto.response.board.GetSearchBoardListResponseDto;
 import com.estate.back.entity.BoardEntity;
 import com.estate.back.repository.BoardRepository;
@@ -58,7 +60,7 @@ public class BoardServiceImplementation implements BoardService
         }
     }
 
-    //!!!복습시작
+  
     @Override
     public ResponseEntity<? super GetSearchBoardListResponseDto> getSearchBoardList(String searchWord) 
     {
@@ -73,10 +75,85 @@ public class BoardServiceImplementation implements BoardService
             return ResponseDto.databaseError();
         }
     }
+
+    //!!!복습시작
+    @Override
+    public ResponseEntity<? super GetBoardResponseDto> getBoard(int receptionNumber) 
+    {
+        try
+        {
+            BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
+            if(boardEntity == null) return ResponseDto.noExistBoard();
+
+            //boardEntity.increaseViewCount();
+            boardRepository.save(boardEntity);
+
+            return GetBoardResponseDto.success(boardEntity);
+        }catch(Exception exception)
+        {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();        
+        }
+    }
+    //!!!복습완료
+
+    @Override
+    public ResponseEntity<ResponseDto> increaseViewCount(int receptionNumber) 
+    {
+       try
+       {
+            BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
+            if(boardEntity == null) return ResponseDto.noExistBoard();
+
+            boardEntity.increaseViewCount();
+            boardRepository.save(boardEntity);
+       }
+       catch(Exception exception)
+       {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+       }
+
+       return ResponseDto.success();
+    }
+
+    //???
+    @Override
+    public ResponseEntity<ResponseDto> postComment(PostCommentRequestDto dto, int receptionNumber) 
+    {
+       try
+       {
+            BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
+            if(boardEntity == null) return ResponseDto.noExistBoard();
+
+            boolean status = boardEntity.getStatus();
+            if(status) return ResponseDto.writtenComment();
+
+            String comment = dto.getComment();
+            boardEntity.setStatus(true);
+            boardEntity.setComment(comment);
+
+            boardRepository.save(boardEntity);
+       }
+       catch(Exception exception)
+       {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+       }
+
+       return ResponseDto.success();
+    }
+    // - 유효성 검사
+    // (receptionNumber)
+    // - 데이터베이스의 Board 테이블에서 receptionNumber에 해당하는 레코드 조회
+    // SELECT * FROM board WHERE reception_number = :receptionNumber;
+    //???  
+
+
     // SELECT * FROM board WHERE title LIKE '%searchWord%' ORDER BY reception_number DESC;
     // findByTitleContainsrderByReceptionNumberDesc();
     // GET Http://localhost:4000/api/vi/board/list/클라이언트
-    //!!!복습완료
+  
 }
 
 // 0. 클라이언트로부터 Authorization 헤더와 Request Body를 포함하여 요청

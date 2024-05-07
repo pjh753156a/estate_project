@@ -41,6 +41,30 @@
     opacity: 0.85;
 }
 
+.error-button {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 8px 24px;
+
+    background-color: rgba(255, 84, 64, 1);
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 175%;
+
+    color: rgba(255, 255, 255, 1);
+}
+
+.error-button:hover {
+    cursor: pointer;
+    opacity: 0.85;
+}
+
 .disable-button {
     box-sizing: border-box;
     display: flex;
@@ -76,9 +100,6 @@
     opacity: 0.9;
 }
 
-/*
-//!!!복습시작
-*/
 .toggle {
     width: 35px;
     height: 20px;
@@ -96,9 +117,6 @@
 
     cursor: pointer;
 }
-/*
-//!!!복습완료
-*/
 
 .text-link {
     font-size: 16px;
@@ -131,11 +149,7 @@
     color: rgba(255, 84, 62, 1);
 }
 
-/*
-//???
-*/
-
-.primary-bedge{
+.primary-bedge {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,8 +167,7 @@
     color: rgba(255, 255, 255, 1);
 }
 
-
-.disable-bedge{
+.disable-bedge {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,7 +184,3 @@
 
     color: rgba(138, 146, 166, 1);
 }
-
-/*
-//???
-*/

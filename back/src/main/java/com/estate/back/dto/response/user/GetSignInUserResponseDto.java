@@ -17,7 +17,6 @@ public class GetSignInUserResponseDto extends ResponseDto
     private String userId;
     private String userRole;
 
-    //!!!복습시작
     private GetSignInUserResponseDto(UserEntity userEntity)
     {
         super(ResponseCode.SUCCESS,ResponseMessage.SUCCESS);

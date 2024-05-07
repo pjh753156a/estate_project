@@ -65,9 +65,7 @@
 
     color:rgba(64, 64, 64, 1);
 }
-/*
-!!!복습완료
-*/
+
 
 
 .qna-list-table-tr {
@@ -91,9 +89,7 @@
     background-color: rgba(238, 238, 238, 0.2);
 }
 
-/*
-!!!복습시작
-*/
+
 .qna-list-table-reception-number
 {
     width: 56px;
@@ -127,9 +123,6 @@
 .qna-list-table-viewcount{
     width: 42px;
 }
-/*
-!!!복습완료
-*/
 
 .qna-list-bottom {
     display: flex;
@@ -218,6 +211,3 @@
 
     color: rgba(64, 64, 64, 1);
 }
-/*
-//???
-*/

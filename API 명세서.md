@@ -749,10 +749,6 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 
-
-
-//!!!복습시작
-
 #### - Q&A 검색 게시물 리스트 불러오기
   
 ##### 설명
@@ -868,4 +864,261 @@ Content-Type: application/json;charset=UTF-8
   "message": "Database Error."
 }
 ```
-//!!!복습완료
+
+
+
+
+
+
+//!!!복습시작
+#### - Q&A 게시물 불러오기
+  
+##### 설명
+
+클라이언트로부터 Request Header의 Authorization 필드로 Bearer 토큰을 
+포함하여 접수번호를 입력받고 요청을 보내면 
+해당하는 Q&A 게시물 데이터를 반환합니다. 
+만약 불러오기에 실패하면 실패처리를 합니다. 인가 실패, 데이터베이스 에러가 발생할 수 있습니다.
+
+- method : **GET**  
+- URL : **/{receptionNumber}**  
+
+##### Request
+
+###### Header
+
+| name | description | required |
+|---|:---:|:---:|
+| Authorization | 인증에 사용될 Bearer 토큰 | 0 |
+
+
+###### Path Variable
+
+| name | type | description | required |
+|---|:---:|:---:|:---:|
+| searchWord | int | 접수 번호 | 0 |
+
+###### Example
+```bash
+curl -v -X GET POST "http://localhost:4000/api/vi/board/{receptionNumber}" \
+ -H "Authorization: Bearer {JWT}"
+```
+
+##### Response
+
+###### Header
+
+| name | description | required |
+|---|:---:|:---:|
+| Content-Type | 반환하는 Response Body의 Content Type (application/json) | O |
+
+
+#### Response Body
+| name | type | description | required |
+|---|:---:|:---:|:---:|
+| code | String | 결과 코드 | O |
+| message | String | 결과 메세지 | O |
+| receptionNumber | int | 접수번호 | O |
+| status | boolean | 상태 | O |
+| title | String | 제목 | 0 |
+
+| writerId | String | 작성자 아이디 | 0 |
+| writeDatetime | String | 작성일</br>(yyyy.mm.dd 형태) | 0 |
+| viewCount | int | 조회수 | 0 |
+| contents | String | 내용 | 0 |
+| comment | String | 답글 내용 | X | 
+
+
+###### Example
+
+응답 성공
+
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "SU",
+  "message": "Success.",
+  "receptionNumber": ${receptionNumber},
+  "status": ${status},
+  "title": "${title}",
+  "writerId": "${writerId}",
+  "writeDatetime": "${writeDatetime}",
+  "viewCount": ${viewCount},
+  "contents": "${contents}",
+  "comment": "${comment}"
+}
+응답 : 실패 (데이터 유효성 검사 실패)
+
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "VF",
+  "message": "Validation Failed."
+}
+응답 : 실패 (존재하지 않는 게시물)
+
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "NB",
+  "message": "No Exist Board."
+}
+응답 : 실패 (인가 실패)
+
+HTTP/1.1 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "AF",
+  "message": "Authorization Failed."
+}
+응답 : 실패 (데이터베이스 오류)
+
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "DBE",
+  "message": "Database Error."
+}
+- Q&A 게시물 조회수 증가
+설명
+클라이언트로부터 Request Header의 Authorization 필드로 Bearer 토큰을 포함하여 접수번호를 입력받고 요청을 보내면 해당하는 Q&A 게시물의 조회수를 증가합니다. 만약 증가에 실패하면 실패처리를 합니다. 인가 실패, 데이터베이스 에러가 발생할 수 있습니다.
+
+method : PATCH
+URL : /{receptionNumber}/increase-view-count
+Request
+Header
+name	description	required
+Authorization	인증에 사용될 Bearer 토큰	O
+Path Variable
+name	type	description	required
+receptionNumber	int	접수 번호	O
+Example
+curl -v -X PATCH "http://localhost:4000/api/vi/board/{receptionNumber}/increase-view-count$" \
+ -H "Authorization: Bearer {JWT}"
+Response
+Header
+name	description	required
+Content-Type	반환하는 Response Body의 Content Type (application/json)	O
+Response Body
+name	type	description	required
+code	String	결과 코드	O
+message	String	결과 메세지	O
+Example
+응답 성공
+
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "SU",
+  "message": "Success."
+}
+응답 : 실패 (데이터 유효성 검사 실패)
+
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "VF",
+  "message": "Validation Failed."
+}
+응답 : 실패 (존재하지 않는 게시물)
+
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "NB",
+  "message": "No Exist Board."
+}
+응답 : 실패 (인가 실패)
+
+HTTP/1.1 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "AF",
+  "message": "Authorization Failed."
+}
+응답 : 실패 (데이터베이스 오류)
+
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "DBE",
+  "message": "Database Error."
+}
+- Q&A 게시물 답글 작성
+설명
+클라이언트로부터 Request Header의 Authorization 필드로 Bearer 토큰을 포함하여 접수번호와 답글 내용을 입력받고 요청을 보내면 해당하는 Q&A 게시물의 답글이 작성됩니다. 만약 증가에 실패하면 실패처리를 합니다. 인가 실패, 데이터베이스 에러가 발생할 수 있습니다.
+
+method : POST
+URL : /{receptionNumber}/comment
+Request
+Header
+name	description	required
+Authorization	인증에 사용될 Bearer 토큰	O
+Path Variable
+name	type	description	required
+receptionNumber	int	접수 번호	O
+Request Body
+name	type	description	required
+comment	String	답글 내용	O
+Example
+curl -v -X POST "http://localhost:4000/api/vi/board/${receptionNumber}/comment" \
+ -H "Authorization: Bearer {JWT}" \
+ -d "comment={commnet}"
+Response
+Header
+name	description	required
+Content-Type	반환하는 Response Body의 Content Type (application/json)	O
+Response Body
+name	type	description	required
+code	String	결과 코드	O
+message	String	결과 메세지	O
+Example
+응답 성공
+
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "SU",
+  "message": "Success."
+}
+응답 : 실패 (데이터 유효성 검사 실패)
+
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "VF",
+  "message": "Validation Failed."
+}
+응답 : 실패 (존재하지 않는 게시물)
+
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "NB",
+  "message": "No Exist Board."
+}
+응답 : 실패 (이미 작성된 답글)
+
+HTTP/1.1 400 Bad Request
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "WC",
+  "message": "Written Comment."
+}
+응답 : 실패 (인가 실패)
+
+HTTP/1.1 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "AF",
+  "message": "Authorization Failed."
+}
+응답 : 실패 (데이터베이스 오류)
+
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json;charset=UTF-8
+{
+  "code": "DBE",
+  "message": "Database Error."
+}
+// 복습완료 

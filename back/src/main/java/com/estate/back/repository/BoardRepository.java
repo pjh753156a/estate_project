@@ -12,10 +12,11 @@ import java.util.List;
 public interface BoardRepository extends JpaRepository<BoardEntity,Integer>
 {
     List<BoardEntity> findByOrderByReceptionNumberDesc();
-    //!!!복습시작
     // Contains / Containing / IsContaining => LIKE '%word%'
     // StartingWith => LIKE 'word%'
     // EndingWith => LIKE '%word' 
     List<BoardEntity> findByTitleContainsOrderByReceptionNumberDesc(String title);
+    //!!!복습시작
+    BoardEntity findByReceptionNumber(Integer receptionNumber);
     //!!!복습완료
 }

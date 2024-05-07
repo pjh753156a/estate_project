@@ -60,6 +60,9 @@ public class WebSecurityConfug
             .authorizeHttpRequests(request -> request
                 .requestMatchers("/","/api/vi/auth/***","/oauth2/callback/*").permitAll()
                 .requestMatchers("api/vi/board/").hasRole("USER")
+                //???
+                .requestMatchers("/api/vi/board/*/comment").hasRole("ADMIN")
+                //???
                 .anyRequest().authenticated()
             )   
                 .oauth2Login(oauth2 -> oauth2

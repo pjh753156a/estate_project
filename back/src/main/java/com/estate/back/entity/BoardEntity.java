@@ -48,6 +48,10 @@ public class BoardEntity
         this.writerId = userId;
         this.writeDatetime = writeDatetime;
         this.viewCount = 0;
-        
+    }
+
+    public void increaseViewCount()
+    {
+        this.viewCount++;
     }
 }

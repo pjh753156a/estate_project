@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.estate.back.common.util.ChangeDateFormatUtil;
 import com.estate.back.entity.BoardEntity;
 
 import jakarta.persistence.GeneratedValue;
@@ -24,11 +25,9 @@ public class BoardListItem
 
     private BoardListItem(BoardEntity boardEntity) throws Exception
     {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date datetime = simpleDateFormat.parse(boardEntity.getWriteDatetime());
-        simpleDateFormat = new SimpleDateFormat("yy.MM.dd");
-        String writeDatetime = simpleDateFormat.format(datetime);
-
+        
+        String writeDatetime = ChangeDateFormatUtil.changeYYMMDD(boardEntity.getWriteDatetime());
+        //???
         String writerId = boardEntity.getWriterId();
         writerId = writerId.substring(0, 1)+
         "*".repeat(writerId.length()-1); 
@@ -54,4 +53,4 @@ public class BoardListItem
         return boardList;
     }
 }
- //!!!복습완료
+//???
