@@ -9,3 +9,11 @@ export interface PostCommentRequestDto
 {
     comment:string;
 }
+
+export interface PutBoardRequestDto
+{
+    title:string;
+    contents:string;
+}
+
+//!!!복습완료

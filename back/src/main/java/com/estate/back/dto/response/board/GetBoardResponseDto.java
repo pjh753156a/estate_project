@@ -44,4 +44,3 @@ public class GetBoardResponseDto extends ResponseDto
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 }
-//???

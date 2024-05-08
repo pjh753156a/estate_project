@@ -24,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 // - 인터넷에서 의사소통을 위한 개인 정보와 데이터 보안을 위해 사용되는 보안 프로토콜
 // - 서버 간 통신에서 데이터를 암호화하여 전송 및 수신
 // - 이메일, 메시지 전송 암호화에 주로 사용됨
-//!!!복습완료
 
 @Component
 @RequiredArgsConstructor

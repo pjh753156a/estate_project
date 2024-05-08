@@ -6,4 +6,3 @@ export interface BoardListItem{
     writeDatetime: string;
     viewCount: number;
 }
-//???

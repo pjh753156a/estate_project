@@ -27,7 +27,6 @@ public class BoardListItem
     {
         
         String writeDatetime = ChangeDateFormatUtil.changeYYMMDD(boardEntity.getWriteDatetime());
-        //???
         String writerId = boardEntity.getWriterId();
         writerId = writerId.substring(0, 1)+
         "*".repeat(writerId.length()-1); 
@@ -53,4 +52,3 @@ public class BoardListItem
         return boardList;
     }
 }
-//???

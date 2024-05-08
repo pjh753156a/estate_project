@@ -44,7 +44,6 @@ public class ResponseDto
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseBody);
     }
 
-    //???
     public static ResponseEntity<ResponseDto> noExistBoard()
     {
         ResponseDto responseBody = 
@@ -59,7 +58,6 @@ public class ResponseDto
             new ResponseDto(ResponseCode.WRITTEN_COMMENT ,ResponseMessage.WRITTEN_COMMENT);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseBody);
     }
-    //???
 
     public static ResponseEntity<ResponseDto> signInFailed()
     {
@@ -74,6 +72,23 @@ public class ResponseDto
             new ResponseDto(ResponseCode.AUTHENTICATION_FAILED,ResponseMessage.AUTHENTICATION_FAILED);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
     }
+
+    //???
+    public static ResponseEntity<ResponseDto> authorizationFailed()
+    {
+        ResponseDto responseBody = 
+            new ResponseDto(ResponseCode.AUTHORIZATION_FAILED,ResponseMessage.AUTHORIZATION_FAILED);
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(responseBody);
+    }
+
+    public static ResponseEntity<ResponseDto> notFound()
+    {
+        ResponseDto responseBody = 
+            new ResponseDto(ResponseCode.NOT_FOUND,ResponseMessage.NOT_FOUND);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseBody);
+    }
+
+    //???
 
     public static ResponseEntity<ResponseDto> tokenCreationFailed()
     {
@@ -96,4 +111,3 @@ public class ResponseDto
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseBody);
     }
 }
-//???

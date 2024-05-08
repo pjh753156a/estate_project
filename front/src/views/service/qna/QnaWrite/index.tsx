@@ -56,7 +56,7 @@ export default function  QnaWrite()
   };
 
   const onPostButtonClickHandler = () => {
-    if(!title || !contents) return;
+    if(!title.trim() || !contents.trim()) return;
 
     const requestBody: PostBoardRequestDto = {title,contents}
     if(!cookies.accessToken) return;
@@ -93,5 +93,5 @@ export default function  QnaWrite()
         onChange={onContentsChangeHandler}/>
       </div>
     </div>
-  )
+  );
 }

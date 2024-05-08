@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.estate.back.dto.request.board.PostBoardRequestDto;
 import com.estate.back.dto.request.board.PostCommentRequestDto;
+import com.estate.back.dto.request.board.PutBoardRequestDto;
 import com.estate.back.dto.response.ResponseDto;
 import com.estate.back.dto.response.board.GetBoardListResponseDto;
 import com.estate.back.dto.response.board.GetBoardResponseDto;
@@ -16,6 +17,7 @@ import com.estate.back.repository.BoardRepository;
 import com.estate.back.repository.UserRepository;
 import com.estate.back.service.BoardService;
 
+import jakarta.el.ELException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -76,7 +78,6 @@ public class BoardServiceImplementation implements BoardService
         }
     }
 
-    //!!!복습시작
     @Override
     public ResponseEntity<? super GetBoardResponseDto> getBoard(int receptionNumber) 
     {
@@ -95,7 +96,6 @@ public class BoardServiceImplementation implements BoardService
             return ResponseDto.databaseError();        
         }
     }
-    //!!!복습완료
 
     @Override
     public ResponseEntity<ResponseDto> increaseViewCount(int receptionNumber) 
@@ -117,7 +117,6 @@ public class BoardServiceImplementation implements BoardService
        return ResponseDto.success();
     }
 
-    //???
     @Override
     public ResponseEntity<ResponseDto> postComment(PostCommentRequestDto dto, int receptionNumber) 
     {
@@ -143,11 +142,64 @@ public class BoardServiceImplementation implements BoardService
 
        return ResponseDto.success();
     }
+
+    //???
+    @Override
+    public ResponseEntity<ResponseDto> deleteBoard(int receptionNumber, String userId) 
+    {
+        try
+        {
+            BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
+            if(boardEntity == null) return ResponseDto.noExistBoard();
+
+            String writerId = boardEntity.getWriterId();
+            boolean isWriter = userId.equals(writerId);
+            if(!isWriter) return ResponseDto.authorizationFailed();
+
+            boardRepository.delete(boardEntity);
+        }
+        catch(Exception exception)
+        {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return ResponseDto.success();
+    }
+
+    @Override
+    public ResponseEntity<ResponseDto> putBoard(PutBoardRequestDto dto, int receptionNumber, String userId) 
+    {
+        try
+        {
+            BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
+            if(boardEntity == null) return ResponseDto.noExistBoard();
+
+            String writerId = boardEntity.getWriterId();
+            boolean isWriter = userId.equals(writerId);
+            if(!isWriter) return ResponseDto.authenticationFailed();
+
+            boolean status = boardEntity.getStatus();
+            if(status) return ResponseDto.writtenComment();
+
+           boardEntity.update(dto);
+           boardRepository.save(boardEntity);
+        }
+        catch(Exception exception)
+        {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
+
+        return ResponseDto.success();
+    }
+    // SELECT ~  entity OK / boolean
+    //???
+
     // - 유효성 검사
     // (receptionNumber)
     // - 데이터베이스의 Board 테이블에서 receptionNumber에 해당하는 레코드 조회
     // SELECT * FROM board WHERE reception_number = :receptionNumber;
-    //???  
 
 
     // SELECT * FROM board WHERE title LIKE '%searchWord%' ORDER BY reception_number DESC;
@@ -170,3 +222,5 @@ public class BoardServiceImplementation implements BoardService
 // 2.1 데이터베이스 오류가 발생하면 'DBE'응답 처리
 
 // 3. 'SU'응답 처리
+
+//???
