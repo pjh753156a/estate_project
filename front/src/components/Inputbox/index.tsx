@@ -12,9 +12,7 @@ export interface InputBoxProps {
     onButtonClickHandler?: () => void;
     message?: string;
     error?: boolean;
-    //???
     onKeydownHandler?:(event:KeyboardEvent<HTMLInputElement>) => void;
-    //???
 }
 
 /*

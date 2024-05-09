@@ -45,13 +45,13 @@
     color: rgba(64, 64, 64, 1);
 }
 
-.top-bar-right{
+.top-bar-right {
     display: flex;
     align-items: center;
-    gap: 10px
+    gap: 10px;
 }
 
-.top-bar-role{
+.top-bar-role {
     font-family: Inter;
     font-size: 16px;
     font-weight: 400;
@@ -59,7 +59,6 @@
 
     color: rgba(138, 146, 165, 1);
 }
-
 
 .side-navigation-container {
     grid-area: sidenav;
@@ -97,8 +96,6 @@
     background-size: 100% 100%;
 }
 
-
-
 .side-navigation-icon.chart {
     background-image: url('../../assets/image/chart-fill-icon.png');
 }
@@ -134,5 +131,9 @@
 .main-container {
     grid-area: main;
     padding: 24px;
+    min-width: 1182px;
     background-color: rgba(238, 238, 238, 0.5);
 }
+/*
+//???
+*/
