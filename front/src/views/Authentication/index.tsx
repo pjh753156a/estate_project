@@ -113,8 +113,6 @@ function SignIn({ onLinkClickHandler }: Props) {
         setMessage('');
     };
 
-    //???
-
     const onPasswordKeydownHandler = (event:KeyboardEvent<HTMLInputElement>) =>
     {
         if(event.key!=='Enter') return;

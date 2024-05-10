@@ -15,5 +15,3 @@ export interface PutBoardRequestDto
     title:string;
     contents:string;
 }
-
-//!!!복습완료

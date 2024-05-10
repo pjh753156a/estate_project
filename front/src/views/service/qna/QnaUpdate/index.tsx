@@ -8,16 +8,14 @@ import { GetBoardResponseDto } from 'src/apis/board/dto/response';
 import ResponseDto from 'src/apis/response.dto';
 import { QNA_DEATIL_ABSOLUTE_PATH, QNA_LIST_ABSOLUTE_PATH } from 'src/constant';
 import { PutBoardRequestDto } from 'src/apis/board/dto/request';
-//!!!복습완료
 
-//!!!복습시작
 //                  component                 //
 export default function QnaUpdate()
 {
-  //!!!복습시작
+  
   //                  state                     //
   const contentsRef = useRef<HTMLTextAreaElement | null>(null);
-  //!!!복습완료
+ 
   const {loginUserId,loginUserRole} = useUserStore();
   const {receptionNumber} = useParams();
   const [cookies] = useCookies();
@@ -25,7 +23,7 @@ export default function QnaUpdate()
   const [title,setTitle] = useState<string>('');
   const [contents,setContents] = useState<string>('');
 
-  ///!!!복습시작
+
   //                function                    //
   const navigator = useNavigate();
 
@@ -63,7 +61,7 @@ export default function QnaUpdate()
     setContents(contents);
     setWriterId(writerId);
   };
-  //!!!복습완료
+  
   
   const putBoardResponse = (result:ResponseDto | null) => {
       const message = 
@@ -84,15 +82,13 @@ export default function QnaUpdate()
       navigator(QNA_DEATIL_ABSOLUTE_PATH(receptionNumber));
   };
  
-   //!!!복습시작
+   
   //                 event handler                //
   const onTitleChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
       const title = event.target.value;
       setTitle(title);
   };
-  //!!!복습완료
   
-   //!!!복습시작
   const onContentsChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
       const contents = event.target.value;
       if(contents.length>1000) return;
@@ -102,9 +98,7 @@ export default function QnaUpdate()
         contentsRef.current.style.height = 'auto';
         contentsRef.current.style.height = `${contentsRef.current.scrollHeight}px`;
   };
-  //!!!복습완료
 
-   //!!!복습시작
   const onUpdateButtonClickHandler = () => {
     if(!cookies.accessToken || !receptionNumber) return;
     if(!title.trim() || !contents.trim()) return;
@@ -112,9 +106,7 @@ export default function QnaUpdate()
     const requestBody: PutBoardRequestDto = {title,contents};
     PutBoardRequest(receptionNumber,requestBody,cookies.accessToken).then(putBoardResponse);
   };
-   //!!!복습완료
-   
-  //!!!복습시작
+  
   //                effect                  //
   let effectFlag = false;
   useEffect(()=>{
@@ -129,9 +121,7 @@ export default function QnaUpdate()
     }
     getBoardRequest(receptionNumber,cookies.accessToken).then(getBoardResponse);
   },[loginUserRole])
-  //!!!복습완료
-  
-  //!!!복습시작
+
   //                render                  //
   return (
     <div id="qna-write-wrapper">
@@ -154,4 +144,3 @@ export default function QnaUpdate()
     </div>
   )
 }
-//???

@@ -24,9 +24,7 @@ export default function QnaDetail()
   const[contents,setContents] = useState<string>('');
   const[status,setStatus] = useState<boolean>(false);
   const[comment,setComment] = useState<string|null>(null);
-  //???
   const[commentRows,setCommentRows] = useState<number>(1);
-  //???
 
   //              function               //
   const navigator = useNavigate();
@@ -108,7 +106,6 @@ export default function QnaDetail()
       getBoardRequest(receptionNumber,cookies.accessToken).then(getBoardResponse);
   };
 
-  //???
   const deleteBoardResponse = (result:ResponseDto|null) =>
   {
     const message = 
@@ -126,7 +123,6 @@ export default function QnaDetail()
 
     navigator(QNA_LIST_ABSOLUTE_PATH);
   };
-  //???
 
   //            event handler            //
   const onCommentChangeHandler = (event:ChangeEvent<HTMLTextAreaElement>) => {
@@ -134,10 +130,8 @@ export default function QnaDetail()
     const comment = event.target.value;
     setComment(comment);
 
-    //???
     const commentRows = comment.split('\n').length;
     setCommentRows(commentRows);
-    //???
   };
   
   const onCommentSubmitClickHandler = () => {
@@ -149,7 +143,6 @@ export default function QnaDetail()
     postCommentRequest(receptionNumber, requestBody,cookies.accessToken).then(postCommentResponse);
   };
 
-  //!!!복습시작
   const onListClickHandler = () => 
   {
     navigator(QNA_LIST_ABSOLUTE_PATH);
@@ -160,7 +153,6 @@ export default function QnaDetail()
     if(!receptionNumber || loginUserId !== writerId || status) return;
     navigator(QNA_UPDATE_ABSOLUTE_PATH(receptionNumber));
   };
-  //!!!복습완료
 
   const onDeleteClickHandler = () => 
   {
@@ -170,7 +162,6 @@ export default function QnaDetail()
 
     deleteBoardRequest(receptionNumber,cookies.accessToken).then(deleteBoardResponse);
   }
-  //???
 
   //              effect                //
   useEffect(()=> {
@@ -223,4 +214,3 @@ export default function QnaDetail()
     </div>
   )
 }
-//???

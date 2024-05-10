@@ -16,4 +16,3 @@ public class PutBoardRequestDto
     @NotBlank
     private String contents;
 }
- //!!!복습완료

@@ -57,7 +57,7 @@ public class BoardController
         return response;
     }
 
-    //???
+  
     @GetMapping("/list/search")
     public ResponseEntity<? super GetSearchBoardListResponseDto> getSearchBoardLisEntity(
         @RequestParam("word") String word
@@ -66,7 +66,7 @@ public class BoardController
         ResponseEntity<? super GetSearchBoardListResponseDto> response = boardService.getSearchBoardList(word);
         return response;
     }
-    //???
+    
 
     @GetMapping("/{receptionNumber}")
     public ResponseEntity<? super GetBoardResponseDto> getBoard(
@@ -84,7 +84,6 @@ public class BoardController
         return response;
     }
 
-    //???
     @DeleteMapping("/{receptionNumber}")
     public ResponseEntity<ResponseDto> deleteBoard(
         @PathVariable("receptionNumber") int receptionNumber, 
@@ -94,7 +93,7 @@ public class BoardController
         return response;
     }
 
-    //!!!복습시작
+    
     @PutMapping("/{receptionNumber}")
     public ResponseEntity<ResponseDto> putBoard (
         @RequestBody @Valid PutBoardRequestDto requestBody,
@@ -105,4 +104,3 @@ public class BoardController
         return response;
     }
 }
-//???

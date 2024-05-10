@@ -24,7 +24,6 @@ export const getBoardListRequest = async (accessToken:string) =>
     return result;
 };
 
-//???
 // function: Q&A 검색 리스트 불러오기 API 함수
 export const getSearchBoardListRequest = async (word:string,accessToken:string) => 
 {
@@ -35,9 +34,7 @@ export const getSearchBoardListRequest = async (word:string,accessToken:string) 
 
     return result;
 }
-//???
 
-//!!!복습시작
 //function: Q&A 게시물 불러오기 API 함수
 export const getBoardRequest = async (receptionNumber:number|string,accessToken:string) => 
 {
@@ -47,9 +44,7 @@ export const getBoardRequest = async (receptionNumber:number|string,accessToken:
 
     return result;
 };
-//!!!복습완료
 
- //!!!복습시작
 //function: Q&A 게시물 수정 API 함수
 export const PutBoardRequest = async(receptionNumber: number| string, requestBody:PutBoardRequestDto,accessToken:string) => {
     const result = await axios.put(PUT_BOARD_URL(receptionNumber),requestBody,bearerAuthorization(accessToken))
@@ -58,7 +53,6 @@ export const PutBoardRequest = async(receptionNumber: number| string, requestBod
     .catch(requestErrorHandler)
     return result;
 } 
-//???
 
 //function: Q&A 게시물 조회수 증가 API 함수
 export const increaseViewCountRequest = async (receptionNumber: number | string, accessToken:string) => 
@@ -79,7 +73,6 @@ export const postCommentRequest = async (receptionNumber:number|string, requestB
         return result;
     };
 
-//???
 //function: Q&A 게시물 삭제 API함수
 export const deleteBoardRequest = async (receptionNumber: number|string, accessToken:string) => 
 {
@@ -88,6 +81,3 @@ export const deleteBoardRequest = async (receptionNumber: number|string, accessT
     .catch(requestErrorHandler);
     return result;
 };
-//???
-
-//???

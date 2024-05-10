@@ -73,7 +73,7 @@ function SideNavigation({path}:Props)
   {
       navigator(RATIO_ABSOLUTE_PATH);
   };
-//???
+  
   const onQnaClickHandler = () => 
   {
       if(pathname===QNA_LIST_ABSOLUTE_PATH)
@@ -85,7 +85,6 @@ function SideNavigation({path}:Props)
           navigator(QNA_LIST_ABSOLUTE_PATH);
       }
   };
-  //???
 
   //                  render                  //
   return(

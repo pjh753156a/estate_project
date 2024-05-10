@@ -18,17 +18,8 @@ public interface BoardService
     ResponseEntity<? super GetBoardListResponseDto> getBoardList();
     ResponseEntity<? super GetSearchBoardListResponseDto> getSearchBoardList(String searchWord);
     ResponseEntity<? super GetBoardResponseDto> getBoard(int receptionNumber);
-
-    //!!!복습시작
     ResponseEntity<ResponseDto> putBoard(PutBoardRequestDto dto, int receptionNumber, String userId);
-    //!!!복습완료
-
     ResponseEntity<ResponseDto> increaseViewCount(int receptionNumber);
-
-    //???
     ResponseEntity<ResponseDto> deleteBoard(int receptionNumber,String userId);
-    //???
-
 }
 
-//???
