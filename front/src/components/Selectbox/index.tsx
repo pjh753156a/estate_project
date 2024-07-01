@@ -34,7 +34,6 @@ export default function SelectBox({ value, onChange }: Prop) {
     const onButtonClickHandler = () => {
         setShow(!show);
     };
-
     const onItemClickHandler = (value: string) => {
         listItem.forEach(item => {
             if(item.value === value) setName(item.name)

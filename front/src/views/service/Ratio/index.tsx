@@ -232,4 +232,3 @@ export default function Ratio() {
         </div>
     )
 }
-//!!!복습완료
