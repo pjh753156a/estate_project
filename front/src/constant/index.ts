@@ -8,7 +8,7 @@ export const QNA_PATH = 'qna';
 export const QNA_WRITE_PATH = 'write';
 export const QNA_DEATIL_PATH = ':receptionNumber';
 export const QNA_UPDATE_PATH = 'update/:receptionNumber';
-//update/${receptionNumber}`;
+// update/${receptionNumber}`;
 
 // description: Navigation 절대 URL PATH 
 export const AUTH_ABSOLUTE_PATH = AUTH_PATH;
@@ -42,10 +42,7 @@ export const GET_BOARD_LIST_URL = `${SERVER_BOARD_MODULE_URL}/list`;
 export const GET_SEARCH_BOARD_LIST_URL =  `${SERVER_BOARD_MODULE_URL}/list/search`;
 export const GET_BOARD_URL = (receptionNumber: number | string) => `${SERVER_BOARD_MODULE_URL}/${receptionNumber}`;
 
-
-
 export const PUT_BOARD_URL = (receptionNumber: number | string) => `${SERVER_BOARD_MODULE_URL}/${receptionNumber}`;
-
 
 export const INCREASE_VIEW_COUNT_URL = (receptionNumber: number | string) => `${SERVER_BOARD_MODULE_URL}/${receptionNumber}/increase-view-count`;
 

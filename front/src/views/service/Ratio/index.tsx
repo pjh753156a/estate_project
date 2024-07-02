@@ -1,11 +1,15 @@
-import { BarElement, CategoryScale, Chart as ChartJS, Legend, LineElement, LinearScale, PointElement, Tooltip } from 'chart.js';
 import { useState } from 'react';
-import { Bar, Line } from 'react-chartjs-2';
 import { useCookies } from 'react-cookie';
-import { getRatioDataRequest } from 'src/apis/estate';
-import { GetRatioDataResponseDto } from 'src/apis/estate/dto/response';
-import ResponseDto from 'src/apis/response.dto';
+import { Bar, Line } from 'react-chartjs-2';
+
 import SelectBox from 'src/components/Selectbox';
+import { BarElement, CategoryScale, Chart as ChartJS, Legend, LineElement, LinearScale, PointElement, Tooltip } from 'chart.js';
+
+import ResponseDto from 'src/apis/response.dto';
+import { GetRatioDataResponseDto } from 'src/apis/estate/dto/response';
+
+import { getRatioDataRequest } from 'src/apis/estate';
+
 import './style.css';
 
 ChartJS.register(
@@ -29,8 +33,8 @@ export default function Ratio() {
     //                    state                    //
     const [cookies] = useCookies();
 
-    const [selectLocal, setSelectLocal] = useState<string>('');
     const [yearMonth,setYearMonth] = useState<string[]>([]);
+    const [selectLocal, setSelectLocal] = useState<string>('');
 
     const [return40,setReturn40] = useState<number[]>([]);
     const [return4060,setReturn4060] = useState<number[]>([]);
@@ -149,7 +153,6 @@ export default function Ratio() {
         }
     ]
     };
-  
 
     const monthRentRatioData = {
         labels: yearMonth,
@@ -179,7 +182,6 @@ export default function Ratio() {
     };
 
     //                    render                    //
-
     const returnFlag = !!return40.length && !!return4060.length && !!return6085.length && !!return85.length;
     const leaseRatioFlag = !!leaseRatio40.length && !!leaseRatio4060.length && !!leaseRatio6085.length && !!leaseRatio85.length;
     const monthRentRatioFlag = !!monthRentRatio40.length && !!monthRentRatio4060.length && !!monthRentRatio6085.length && !!monthRentRatio85.length;

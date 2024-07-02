@@ -14,14 +14,14 @@ import lombok.Getter;
 @Getter
 public class GetBoardResponseDto extends ResponseDto
 {
-    private Integer receptionNumber;
-    private boolean status;
     private String title;
+    private String comment;
+    private String contents;
     private String writerId;
     private String writeDatetime;
+    private boolean status;
     private Integer viewCount;
-    private String contents;
-    private String comment;
+    private Integer receptionNumber;
 
     private GetBoardResponseDto(BoardEntity boardEntity) throws Exception
     {

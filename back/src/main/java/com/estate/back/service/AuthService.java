@@ -12,10 +12,9 @@ import com.estate.back.dto.response.auth.SignInResponseDto;
 
 public interface AuthService 
 {
-    ResponseEntity<? super SignInResponseDto> signIn (SignInRequestDto dto);
+    ResponseEntity<ResponseDto> signUp(SignUpRequestDto dto);
     ResponseEntity<ResponseDto> idCheck(idCheckRequestDto dto);
     ResponseEntity<ResponseDto> emailAuth(EmailAuthRequestDto dto);
+    ResponseEntity<? super SignInResponseDto> signIn (SignInRequestDto dto);
     ResponseEntity<ResponseDto> emailAuthCheck(EmailAuthCheckRequestDto dto);
-    ResponseEntity<ResponseDto> signUp(SignUpRequestDto dto);
-
 }

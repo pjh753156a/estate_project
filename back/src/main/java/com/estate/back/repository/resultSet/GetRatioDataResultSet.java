@@ -2,7 +2,6 @@ package com.estate.back.repository.resultSet;
 
 public interface GetRatioDataResultSet 
 {
-    
     String getYearMonth();
     Double getReturn40();
     Double getReturn4060();
@@ -17,4 +16,3 @@ public interface GetRatioDataResultSet
     Double getMonthRentRatio6085();
     Double getMonthRentRatio85();
 }
-//!!!복습완료

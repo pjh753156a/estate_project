@@ -75,5 +75,4 @@ public class GetRatioDataResponseDto extends ResponseDto  {
         GetRatioDataResponseDto responseBody = new GetRatioDataResponseDto(resultSets);
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
-
 }

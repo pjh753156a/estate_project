@@ -57,7 +57,6 @@ public class BoardController
         return response;
     }
 
-  
     @GetMapping("/list/search")
     public ResponseEntity<? super GetSearchBoardListResponseDto> getSearchBoardLisEntity(
         @RequestParam("word") String word
@@ -67,7 +66,6 @@ public class BoardController
         return response;
     }
     
-
     @GetMapping("/{receptionNumber}")
     public ResponseEntity<? super GetBoardResponseDto> getBoard(
         @PathVariable("receptionNumber") int receptionNumber
@@ -92,7 +90,6 @@ public class BoardController
         ResponseEntity<ResponseDto> response = boardService.deleteBoard(receptionNumber, userId);
         return response;
     }
-
     
     @PutMapping("/{receptionNumber}")
     public ResponseEntity<ResponseDto> putBoard (

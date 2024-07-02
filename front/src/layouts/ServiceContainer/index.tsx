@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import './style.css';
-import { Outlet, useLocation, useNavigate } from 'react-router';
-import { AUTH_ABSOLUTE_PATH, LOCAL_ABSOLUTE_PATH, QNA_LIST_ABSOLUTE_PATH, RATIO_ABSOLUTE_PATH } from 'src/constant';
 import { useCookies } from 'react-cookie';
+import { useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router';
+
 import useUserStore from 'src/stores/user.store';
-import { GetSignInUserResponseDto } from 'src/apis/user/dto/response';
+
 import ResponseDto from 'src/apis/response.dto';
+import { GetSignInUserResponseDto } from 'src/apis/user/dto/response';
+
 import { getSignInUserRequest } from 'src/apis/user';
+
+import { AUTH_ABSOLUTE_PATH, LOCAL_ABSOLUTE_PATH, QNA_LIST_ABSOLUTE_PATH, RATIO_ABSOLUTE_PATH } from 'src/constant';
+
+import './style.css';
 
 type Path = '지역 평균'|'비율 계산'|'Q&A 게시판'|'';
 
@@ -20,12 +25,12 @@ interface Props
 function TopBar({path}:Props)
 {
   //            state                //
+  const[,,removeCookie] = useCookies();
   const { loginUserRole } = useUserStore();
-  const[cookies,setCookie,removeCookie] = useCookies();
 
   //            function                     //
   const navigator = useNavigate();
- 
+
   //            event handler               //
   const onLogoutClickHandler = () => 
   {
@@ -33,9 +38,8 @@ function TopBar({path}:Props)
       navigator(AUTH_ABSOLUTE_PATH);
   };
 
-  
-   //            render              //
-   return(
+  //            render              //
+  return(
     <>
       <div className="logo-container">임대주택 가격 서비스</div>
       <div className="top-bar-container">
@@ -46,7 +50,7 @@ function TopBar({path}:Props)
           </div>
       </div>
     </>
-   );
+  );
 }
 
 //              component                   //
@@ -61,7 +65,6 @@ function SideNavigation({path}:Props)
 
   //                  function                  //
   const navigator = useNavigate();
-
 
   //                  event handler             //
   const onLocalClickHandler = () => 
@@ -105,21 +108,14 @@ function SideNavigation({path}:Props)
   );
 }
 
-
-
 //              component                   //
 export default function ServiceContainer()
 {
   //            state               //
-  const {pathname} = useLocation();
-  
-  const { setLoginUserId, setLoginUserRole } = useUserStore();
-
-  
   const [cookies] = useCookies();
+  const {pathname} = useLocation();
   const [path,setPath] = useState<Path>('');
-  
-
+  const { setLoginUserId, setLoginUserRole } = useUserStore();
 
   //                    function                    //
   const navigator = useNavigate();
@@ -141,9 +137,8 @@ export default function ServiceContainer()
     setLoginUserId(userId);
     setLoginUserRole(userRole);
 
-};
+  };
 
-  
   //          effect              //
   useEffect(()=>{
     const path = 
@@ -163,11 +158,6 @@ export default function ServiceContainer()
 
     getSignInUserRequest(cookies.accessToken).then(getSignInUserResponse);
   }, [cookies.accessToken]);
-
-
-
-  console.log(pathname);
-  // path에 대한 객체를 반환
 
   //            render              //
   return (

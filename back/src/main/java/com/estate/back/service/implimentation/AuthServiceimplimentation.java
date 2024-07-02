@@ -30,10 +30,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthServiceimplimentation implements AuthService
 {
+    private final JwtProvider jwtProvider;
+    private final MailProvider mailProvider;
     private final UserRepository userRepository;
     private final EmailAuthNumberRepository emailAuthNumberRepository;
-    private final MailProvider mailProvider;
-    private final JwtProvider jwtProvider;
     private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Override
@@ -108,7 +108,6 @@ public class AuthServiceimplimentation implements AuthService
             return ResponseDto.databaseError();
         }
 
-
         return ResponseDto.success();
     }
 
@@ -154,7 +153,6 @@ public class AuthServiceimplimentation implements AuthService
             boolean isMatched = emailAuthNumberRepository.existsByEmailAndAuthNumber
             (userEmail, authNumber);
             if(!isMatched) return ResponseDto.authenticationFailed();
-           
 
             String encodedPassword = passwordEncoder.encode(userPassword);
             dto.setUserPassword(encodedPassword);
@@ -170,5 +168,4 @@ public class AuthServiceimplimentation implements AuthService
 
         return ResponseDto.success();
     }
-
 }

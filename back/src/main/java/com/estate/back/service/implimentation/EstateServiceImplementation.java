@@ -24,7 +24,7 @@ public class EstateServiceImplementation implements EstateService {
     @Override
     public ResponseEntity<? super GetLocalDataResponseDto> getLocalData(String local) {
         
-        try {
+        try{
 
             List<GetLocalDataResultSet> resultSets = estateRepository.getLocalData(local);
             return GetLocalDataResponseDto.success(resultSets);
@@ -35,11 +35,11 @@ public class EstateServiceImplementation implements EstateService {
         }
 
     }
-   
+
     @Override
     public ResponseEntity<? super GetRatioDataResponseDto> getRatioData(String local) {
         
-        try {
+        try{
             
             List<GetRatioDataResultSet> resultSets = estateRepository.getRatioData(local);
             return GetRatioDataResponseDto.success(resultSets);
@@ -49,8 +49,5 @@ public class EstateServiceImplementation implements EstateService {
             exception.printStackTrace();
             return ResponseDto.databaseError();
         }
-
     }
-
 }
-//!!!복습완료

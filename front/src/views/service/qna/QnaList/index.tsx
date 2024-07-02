@@ -1,13 +1,18 @@
-import { ChangeEvent, useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router';
-import { getSearchBoardListRequest } from 'src/apis/board';
-import { GetSearchBoardListResponseDto } from 'src/apis/board/dto/response';
-import ResponseDto from 'src/apis/response.dto';
-import { AUTH_ABSOLUTE_PATH, COUNT_PER_PAGE, COUNT_PER_SECTION, QNA_DEATIL_ABSOLUTE_PATH, QNA_WRITE_ABSOLUTE_PATH } from 'src/constant';
-import { usePagination } from 'src/hooks';
+import { ChangeEvent, useEffect, useState } from 'react';
+
 import { useUserStore } from 'src/stores';
+import { usePagination } from 'src/hooks';
+
 import { BoardListItem } from 'src/types';
+import ResponseDto from 'src/apis/response.dto';
+import { GetSearchBoardListResponseDto } from 'src/apis/board/dto/response';
+
+import { getSearchBoardListRequest } from 'src/apis/board';
+
+import { AUTH_ABSOLUTE_PATH, COUNT_PER_PAGE, COUNT_PER_SECTION, QNA_DEATIL_ABSOLUTE_PATH, QNA_WRITE_ABSOLUTE_PATH } from 'src/constant';
+
 import './style.css';
 
 //                    component                    //
@@ -65,9 +70,8 @@ export default function QnaList() {
     } = usePagination<BoardListItem>(COUNT_PER_PAGE, COUNT_PER_SECTION);
 
     const [cookies] = useCookies();
-
-    const [isToggleOn, setToggleOn] = useState<boolean>(false);
     const [searchWord, setSearchWord] = useState<string>('');
+    const [isToggleOn, setToggleOn] = useState<boolean>(false);
 
     //                    function                    //
     const navigator = useNavigate();

@@ -14,16 +14,16 @@ package com.estate.back.dto.response;
 public interface ResponseMessage 
 {
     String SUCCESS = "success";
-    String VALIDATION_FAILED ="Varidation Failed.";
+    String NOT_FOUND = "Not Found.";
     String DUPLICATED_ID="Duplicatied Id.";
-    String DUPLICATED_EMAIL="Duplicatied Email.";
+    String DATABASE_ERROR="Database Error.";
+    String SIGN_IN_FAILED="Sign in Failed.";
     String NO_EXIST_BOARD = "No Exist Board.";
     String WRITTEN_COMMENT = "Written Comment";
-    String SIGN_IN_FAILED="Sign in Failed.";
+    String MAIL_SEND_FAILED="Mail send Failed.";
+    String DUPLICATED_EMAIL="Duplicatied Email.";
+    String VALIDATION_FAILED ="Varidation Failed.";
+    String TOKEN_CREATION_FAILED="Token creation Failed";
     String AUTHENTICATION_FAILED="Authentication Failed.";
     String AUTHORIZATION_FAILED = "Authorization Failed.";
-    String NOT_FOUND = "Not Found.";
-    String TOKEN_CREATION_FAILED="Token creation Failed";
-    String MAIL_SEND_FAILED="Mail send Failed.";
-    String DATABASE_ERROR="Database Error.";
 }

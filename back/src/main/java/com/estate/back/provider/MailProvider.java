@@ -8,7 +8,6 @@ import jakarta.mail.MessagingException;
 import jakarta.mail.Message.RecipientType;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 // email 전송을 위한 제공자

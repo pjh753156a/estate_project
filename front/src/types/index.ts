@@ -1,8 +1,8 @@
 export interface BoardListItem{
-    receptionNumber: number;
-    status: boolean;
     title: string;
     writerId: string;
     writeDatetime: string;
+    status: boolean;
     viewCount: number;
+    receptionNumber: number;
 }

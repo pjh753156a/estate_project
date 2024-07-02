@@ -1,28 +1,19 @@
-import React, { ChangeEvent, KeyboardEvent } from "react";
+import { ChangeEvent, KeyboardEvent } from "react";
 import './style.css';
 
 export interface InputBoxProps {
     label: string;
-    type: 'text' | 'password';
     value: string;
+    error?: boolean;
+    message?: string;
     placeholder: string;
-    onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
     buttonTitle?: string;
     buttonStatus?: boolean;
+    type: 'text' | 'password';
     onButtonClickHandler?: () => void;
-    message?: string;
-    error?: boolean;
+    onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
     onKeydownHandler?:(event:KeyboardEvent<HTMLInputElement>) => void;
 }
-
-/*
-<InputBox label="인증번호" type="text" 
-value=16T1 placeholder="인증번호 4자리를 입력해주세요" 
-onChangeHandler={onAuthNumberChangeHandler} 
-buttonTitle="인증 확인" buttonStatus=false
-onButtonClickHandler={onAuthNumberButtonClickHandler} 
-message='인증번호가 확인되었습니다.' error=false />}
-*/
 
 export default function InputBox({ label, type, value, placeholder, onChangeHandler, buttonTitle, buttonStatus, onButtonClickHandler, message, error,onKeydownHandler }: InputBoxProps) {
 

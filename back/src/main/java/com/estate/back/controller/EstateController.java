@@ -34,6 +34,4 @@ public class EstateController {
         ResponseEntity<? super GetRatioDataResponseDto> response = estateService.getRatioData(local);
         return response;
     }
-
 }
-//!!!복습완료

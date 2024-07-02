@@ -1,23 +1,28 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import './style.css';
-import { useUserStore } from 'src/stores';
-import { useNavigate } from 'react-router';
-import { QNA_LIST_ABSOLUTE_PATH } from 'src/constant';
-import { postBoardRequest } from 'src/apis/board';
-import { PostBoardRequestDto } from 'src/apis/board/dto/request';
 import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
+
+import { useUserStore } from 'src/stores';
+
 import ResponseDto from 'src/apis/response.dto';
+import { PostBoardRequestDto } from 'src/apis/board/dto/request';
+
+import { postBoardRequest } from 'src/apis/board';
+
+import { QNA_LIST_ABSOLUTE_PATH } from 'src/constant';
+
+import './style.css';
 
 //            component               //
 export default function  QnaWrite()
 {
   
   //                  state                     //
-  const contentsRef = useRef<HTMLTextAreaElement | null>(null);
-  const {loginUserRole} = useUserStore();
   const [cookies] = useCookies();
+  const {loginUserRole} = useUserStore();
   const [title,setTitle] = useState<string>('');
   const [contents,setContents] = useState<string>('');
+  const contentsRef = useRef<HTMLTextAreaElement | null>(null);
 
   //                function                    //
   const navigator = useNavigate();
@@ -63,7 +68,7 @@ export default function  QnaWrite()
 
     postBoardRequest(requestBody,cookies.accessToken).then(postBoardResponse);
   }
-   
+  
   //                effect                  //
   useEffect(() => {
     if(loginUserRole === 'ROLE_ADMIN')
@@ -79,7 +84,7 @@ export default function  QnaWrite()
       <div className='qna-write-top'>
         <div className='qna-write-title-box'>
           <input className='qna-write-title-input' 
-           value={title} onChange={onTitleChangeHandler}
+          value={title} onChange={onTitleChangeHandler}
           placeholder='제목을 입력해주세요.'/>
         </div>
         <div className='primary-button' onClick={onPostButtonClickHandler}>올리기</div>

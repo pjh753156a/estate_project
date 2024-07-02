@@ -15,7 +15,6 @@ import com.estate.back.entity.EmailAuthNumberEntity;
 import com.estate.back.entity.UserEntity;
 import com.estate.back.repository.EmailAuthNumberRepository;
 import com.estate.back.repository.UserRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -62,7 +61,6 @@ public class OAuth2UserSerivceImplementation extends DefaultOAuth2UserService
 
             EmailAuthNumberEntity emailAuthNumberEntity = new EmailAuthNumberEntity(email,"0000"); 
             emailAuthNumberRepository.save(emailAuthNumberEntity);
-          
 
             UserEntity userEntity = new UserEntity(userId, password, email,"ROLE_USER",oauthClientName);
             userRepository.save(userEntity);

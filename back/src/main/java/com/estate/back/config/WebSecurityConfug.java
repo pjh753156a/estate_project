@@ -39,10 +39,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WebSecurityConfug 
 {
+    private final OAuth2SuccessHandler oAuth2SuccessHandler;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final OAuth2UserSerivceImplementation oAuth2UserService;
-    private final OAuth2SuccessHandler oAuth2SuccessHandler;
-    
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception
@@ -72,7 +71,7 @@ public class WebSecurityConfug
             .exceptionHandling(exception -> exception
                 .authenticationEntryPoint(new AuthorizationFailEntryPoint())
             )
-          
+
             .addFilterBefore(jwtAuthenticationFilter,
             UsernamePasswordAuthenticationFilter.class);
 

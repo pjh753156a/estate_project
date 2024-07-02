@@ -40,7 +40,4 @@ public interface EstateRepository extends JpaRepository<EstateEntity, Integer> {
     nativeQuery=true
     )
     List<GetRatioDataResultSet> getRatioData(@Param("local") String local);
-
-
 }
-//!!!복습완료

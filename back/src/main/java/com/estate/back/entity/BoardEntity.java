@@ -29,13 +29,13 @@ public class BoardEntity
     @Id
     @GeneratedValue(strategy =GenerationType.IDENTITY)
     private Integer receptionNumber;
+    private Integer viewCount;
     private Boolean status;
     private String title;
+    private String comment;
     private String contents;
     private String writerId;
     private String writeDatetime;
-    private Integer viewCount;
-    private String comment;
 
     public BoardEntity(PostBoardRequestDto dto, String userId)
     {

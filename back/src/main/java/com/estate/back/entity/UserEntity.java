@@ -21,11 +21,11 @@ public class UserEntity
 {
     @Id
     private String userId;
-    private String userPassword;
-    private String userEmail;
-    private String userRole;
     private String joinPath;
-
+    private String userRole;
+    private String userEmail;
+    private String userPassword;
+    
     public UserEntity(SignUpRequestDto dto)
     {
         this.userId = dto.getUserId();

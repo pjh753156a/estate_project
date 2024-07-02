@@ -1,28 +1,31 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import './style.css';
-import { useUserStore } from 'src/stores';
 import { useCookies } from 'react-cookie';
 import { useNavigate, useParams } from 'react-router';
-import { PutBoardRequest, getBoardRequest } from 'src/apis/board';
-import { GetBoardResponseDto } from 'src/apis/board/dto/response';
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
+
+import { useUserStore } from 'src/stores';
+
 import ResponseDto from 'src/apis/response.dto';
-import { QNA_DEATIL_ABSOLUTE_PATH, QNA_LIST_ABSOLUTE_PATH } from 'src/constant';
 import { PutBoardRequestDto } from 'src/apis/board/dto/request';
+import { GetBoardResponseDto } from 'src/apis/board/dto/response';
+
+import { PutBoardRequest, getBoardRequest } from 'src/apis/board';
+
+import { QNA_DEATIL_ABSOLUTE_PATH, QNA_LIST_ABSOLUTE_PATH } from 'src/constant';
+
+import './style.css';
 
 //                  component                 //
 export default function QnaUpdate()
 {
   
   //                  state                     //
-  const contentsRef = useRef<HTMLTextAreaElement | null>(null);
- 
-  const {loginUserId,loginUserRole} = useUserStore();
-  const {receptionNumber} = useParams();
-  const [cookies] = useCookies();
-  const [writerId,setWriterId] = useState<string>('');
   const [title,setTitle] = useState<string>('');
   const [contents,setContents] = useState<string>('');
-
+  
+  const [cookies] = useCookies();
+  const {receptionNumber} = useParams();
+  const {loginUserId,loginUserRole} = useUserStore();
+  const contentsRef = useRef<HTMLTextAreaElement | null>(null);
 
   //                function                    //
   const navigator = useNavigate();
@@ -46,22 +49,20 @@ export default function QnaUpdate()
     const {writerId, title, contents, status} = result as GetBoardResponseDto;
     if(writerId !== loginUserId)
     {
-        alert('권한이 없습니다.');
-        navigator(QNA_LIST_ABSOLUTE_PATH);
-        return;
+      alert('권한이 없습니다.');
+      navigator(QNA_LIST_ABSOLUTE_PATH);
+      return;
     }
     if(status)
     {
-        alert('답변이 완료된 게시물입니다.');
-        navigator(QNA_LIST_ABSOLUTE_PATH);
-        return;
+      alert('답변이 완료된 게시물입니다.');
+      navigator(QNA_LIST_ABSOLUTE_PATH);
+      return;
     }
 
     setTitle(title);
     setContents(contents);
-    setWriterId(writerId);
   };
-  
   
   const putBoardResponse = (result:ResponseDto | null) => {
       const message = 
@@ -74,8 +75,8 @@ export default function QnaUpdate()
 
       if(!result || result.code !== 'SU')
       {
-          alert(message);
-          return;
+        alert(message);
+        return;
       }
 
       if(!receptionNumber) return;

@@ -2,9 +2,9 @@ import ResponseDto from "src/apis/response.dto";
 
 export interface GetLocalDataResponseDto extends ResponseDto 
 {
-    yearMonth:string[];
     sale:number[];
     lease:number[];
+    yearMonth:string[];
     monthRent:number[];
 }
 
@@ -27,4 +27,3 @@ export interface GetRatioDataResponseDto extends ResponseDto
     monthRentRatio6085:number[];
     monthRentRatio85:number[];
 }
-//!!!복습완료

@@ -16,10 +16,11 @@ public interface BoardService
     ResponseEntity<ResponseDto> postComment(PostCommentRequestDto dto, int receptionNumber); 
 
     ResponseEntity<? super GetBoardListResponseDto> getBoardList();
-    ResponseEntity<? super GetSearchBoardListResponseDto> getSearchBoardList(String searchWord);
     ResponseEntity<? super GetBoardResponseDto> getBoard(int receptionNumber);
-    ResponseEntity<ResponseDto> putBoard(PutBoardRequestDto dto, int receptionNumber, String userId);
+    ResponseEntity<? super GetSearchBoardListResponseDto> getSearchBoardList(String searchWord);
+
     ResponseEntity<ResponseDto> increaseViewCount(int receptionNumber);
     ResponseEntity<ResponseDto> deleteBoard(int receptionNumber,String userId);
+    ResponseEntity<ResponseDto> putBoard(PutBoardRequestDto dto, int receptionNumber, String userId);
 }
 

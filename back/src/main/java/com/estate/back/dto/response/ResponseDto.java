@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
 // Response의 공통 형태
 @Getter
@@ -50,7 +49,6 @@ public class ResponseDto
             new ResponseDto(ResponseCode.NO_EXIST_BOARD ,ResponseMessage.NO_EXIST_BOARD);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseBody);
     }
-
 
     public static ResponseEntity<ResponseDto> writtenComment()
     {

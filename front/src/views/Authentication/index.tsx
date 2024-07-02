@@ -1,21 +1,25 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
-import "./style.css";
-
 import { useCookies } from "react-cookie";
 import { useNavigate, useParams } from "react-router";
-import { IdCheckRequest, SignInRequest, emailAuthCheckRequest, emailAuthRequest, signUpRequest } from "src/apis/auth";
-import { EmailAuthCheckRequestDto, EmailAuthRequestDto, IdCheckRequestDto, SignInRequestDto, SignUpRequestDto } from "src/apis/auth/dto/request";
-import { SignInResponseDto } from "src/apis/auth/dto/response";
-import ResponseDto from "src/apis/response.dto";
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+
+import InputBox from "src/components/Inputbox";
 import SignInBackground from 'src/assets/image/sign-in-background.png';
 import SignUpBackground from 'src/assets/image/sign-up-background.png';
-import InputBox from "src/components/Inputbox";
+
+import ResponseDto from "src/apis/response.dto";
+import { SignInResponseDto } from "src/apis/auth/dto/response";
+import { EmailAuthCheckRequestDto, EmailAuthRequestDto, IdCheckRequestDto, SignInRequestDto, SignUpRequestDto } from "src/apis/auth/dto/request";
+
+import { IdCheckRequest, SignInRequest, emailAuthCheckRequest, emailAuthRequest, signUpRequest } from "src/apis/auth";
+
 import { LOCAL_ABSOLUTE_PATH } from "src/constant";
+
+import "./style.css";
 
 export function Sns()
 {
+    const [,setCookie] = useCookies();
     const {accessToken,expires} = useParams();
-    const [cookie,setCookie] = useCookies();
 
     const navigator = useNavigate();
 
@@ -65,13 +69,11 @@ interface Props {
 function SignIn({ onLinkClickHandler }: Props) {
 
     //                    state                    //
-    const[cookies, setCookie] = useCookies();
+    const[, setCookie] = useCookies();
     const [id, setId] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
     const [message, setMessage] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
-
-    
     //                  function                    //
     const navigator = useNavigate();
 
@@ -84,7 +86,6 @@ function SignIn({ onLinkClickHandler }: Props) {
             result.code === 'TF' ? '서버에 문제가 있습니다.' :
             result.code === 'DBE' ? '서버에 문제가 있습니다.' : '';
         setMessage(message);
-
 
         const isSuccess = result && result.code === 'SU';
         if(!isSuccess) return;
@@ -157,26 +158,26 @@ function SignUp({ onLinkClickHandler }: Props) {
 
     //                    state                    //
     const [id, setId] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [passwordCheck, setPasswordCheck] = useState<string>('');
     const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
     const [authNumber, setAuthNumber] = useState<string>('');
+    const [passwordCheck, setPasswordCheck] = useState<string>('');
 
     const [idButtonStatus, setIdButtonStatus] = useState<boolean>(false);
     const [emailButtonStatus, setEmailButtonStatus] = useState<boolean>(false);
     const [authNumberButtonStatus, setAuthNumberButtonStatus] = useState<boolean>(false);
 
     const [isIdCheck, setIdCheck] = useState<boolean>(false);
-    const [isPasswordPattern, setPasswordPattern] = useState<boolean>(false);
-    const [isEqualPassword, setEqualPassword] = useState<boolean>(false);
     const [isEmailCheck, setEmailCheck] = useState<boolean>(false);
+    const [isEqualPassword, setEqualPassword] = useState<boolean>(false);
     const [isAuthNumberCheck, setAuthNumberCheck] = useState<boolean>(false);
+    const [isPasswordPattern, setPasswordPattern] = useState<boolean>(false);
 
     const [idMessage, setIdMessage] = useState<string>('');
-    const [passwordMessage, setPasswordMessage] = useState<string>('');
-    const [passwordCheckMessage, setPasswordCheckMessage] = useState<string>('');
     const [emailMessage, setEmailMessage] = useState<string>('');
+    const [passwordMessage, setPasswordMessage] = useState<string>('');
     const [authNumberMessage, setAuthNumberMessage] = useState<string>('');
+    const [passwordCheckMessage, setPasswordCheckMessage] = useState<string>('');
 
     const [isIdError, setIdError] = useState<boolean>(false);
     const [isEmailError, setEmailError] = useState<boolean>(false);
@@ -185,23 +186,20 @@ function SignUp({ onLinkClickHandler }: Props) {
     const isSignUpActive = isIdCheck && isEmailCheck && isAuthNumberCheck && isPasswordPattern && isEqualPassword;
     const signUpButtonClass = `${isSignUpActive ? 'primary' : 'disable'}-button full-width`;
 
-
     //                  function                           //
     const idCheckResponse = (result:ResponseDto | null) => 
     {
-
-    const  idMessage = !result ? '서버에 문제가 있습니다.' :
+        const  idMessage = !result ? '서버에 문제가 있습니다.' :
                     result.code === 'VF' ? '아이디는 빈값 혹은 공백으로만 이루어질 수 없습니다.':
                     result.code === 'DI' ? '이미 사용중인 아이디입니다.':
                     result.code === 'DBE' ? '서버에 문제가 있습니다.':
                     result.code === 'SU' ? '사용 가능한 아이디 입니다.' : '';
     
-    const idError = !(result && result.code === 'SU');
-    const idCheck = !idError;                
-
-    setIdMessage(idMessage);
-    setIdError(idError);
-    setIdCheck(idCheck);
+        const idError = !(result && result.code === 'SU');
+        const idCheck = !idError;                
+        setIdMessage(idMessage);
+        setIdError(idError);
+        setIdCheck(idCheck);
     }
 
     const emailAuthResponse = (result:ResponseDto |null) => 
@@ -216,7 +214,6 @@ function SignUp({ onLinkClickHandler }: Props) {
 
         const emailCheck = result !== null && result.code === 'SU';
         const emailError = !emailCheck;
-
         setEmailMessage(emailMessage);
         setEmailCheck(emailCheck);
         setEmailError(emailError);
@@ -233,7 +230,6 @@ function SignUp({ onLinkClickHandler }: Props) {
 
         const authNumberCheck = result !== null && result.code === 'SU';
         const authNumberError = !authNumberCheck;
-
         setAuthNumberMessage(authNumberMessage);
         setAuthNumberCheck(authNumberCheck);
         setAuthNumberError(authNumberError);

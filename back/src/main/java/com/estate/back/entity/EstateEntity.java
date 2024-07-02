@@ -36,4 +36,3 @@ public class EstateEntity {
     private Double monthRentRatio6085;  // 60m2 초과 85m2 이하 전세가 대비 월세 보증금 비율
     private Double monthRentRatio85;    // 85m2 초과 전세가 대비 월세 보증금 비율
 }
-//!!!복습완료

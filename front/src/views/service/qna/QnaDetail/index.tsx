@@ -1,30 +1,36 @@
-import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import './style.css';
-import { useUserStore } from 'src/stores';
-import { deleteBoardRequest, getBoardRequest, increaseViewCountRequest, postCommentRequest } from 'src/apis/board';
 import { useCookies } from 'react-cookie';
 import { useNavigate, useParams } from 'react-router';
+import { ChangeEvent, useEffect, useState } from 'react';
+
+import { useUserStore } from 'src/stores';
+
 import ResponseDto from 'src/apis/response.dto';
-import { AUTH_ABSOLUTE_PATH, QNA_LIST_ABSOLUTE_PATH, QNA_UPDATE_ABSOLUTE_PATH } from 'src/constant';
 import { GetBoardResponseDto } from 'src/apis/board/dto/response';
 import { PostCommentRequestDto } from 'src/apis/board/dto/request';
+
+import { deleteBoardRequest, getBoardRequest, increaseViewCountRequest, postCommentRequest } from 'src/apis/board';
+
+import { AUTH_ABSOLUTE_PATH, QNA_LIST_ABSOLUTE_PATH, QNA_UPDATE_ABSOLUTE_PATH } from 'src/constant';
+
+import './style.css';
 
 //          component           //
 export default function QnaDetail()
 {
   //           state             //
-  const{loginUserId,loginUserRole} = useUserStore();
-  const{receptionNumber} = useParams();
+  const[status,setStatus] = useState<boolean>(false);
+  const[viewCount,setViewCount] = useState<number>(0);
+  const[commentRows,setCommentRows] = useState<number>(1);
 
-  const[cookies] = useCookies();
   const[title,setTitle] = useState<string>('');
   const[writerId,setWriterId] = useState<string>('');
-  const[writeDate,setWriteDate] = useState<string>('');
-  const[viewCount,setViewCount] = useState<number>(0);
   const[contents,setContents] = useState<string>('');
-  const[status,setStatus] = useState<boolean>(false);
+  const[writeDate,setWriteDate] = useState<string>('');
   const[comment,setComment] = useState<string|null>(null);
-  const[commentRows,setCommentRows] = useState<number>(1);
+
+  const[cookies] = useCookies();
+  const{receptionNumber} = useParams();
+  const{loginUserId,loginUserRole} = useUserStore();
 
   //              function               //
   const navigator = useNavigate();
@@ -88,7 +94,7 @@ export default function QnaDetail()
 
   const postCommentResponse = (result:ResponseDto | null) => 
   {
-      const message = 
+    const message = 
       !result ? '서버에 문제가 있습니다.':
       result.code === 'AF' ? '권한이 없습니다.' :
       result.code === 'VF' ? '입력 데이터가 올바르지 않습니다.' :
@@ -96,14 +102,14 @@ export default function QnaDetail()
       result.code === 'WC' ? '이미 답글이 작성된 게시물입니다.' :
       result.code === 'DBE' ? '서버에 문제가 있습니다.' : '';
 
-      if(!result || result.code !== 'SU')
-      {
-          alert(message);
-          return;
-      }
+    if(!result || result.code !== 'SU')
+    {
+        alert(message);
+        return;
+    }
 
-      if(!receptionNumber || !cookies.accessToken) return;
-      getBoardRequest(receptionNumber,cookies.accessToken).then(getBoardResponse);
+    if(!receptionNumber || !cookies.accessToken) return;
+    getBoardRequest(receptionNumber,cookies.accessToken).then(getBoardResponse);
   };
 
   const deleteBoardResponse = (result:ResponseDto|null) =>
@@ -169,7 +175,6 @@ export default function QnaDetail()
     increaseViewCountRequest(receptionNumber,cookies.accessToken).then(increaseViewCountResponse);
   },[]);
 
- 
   //           render            //
   const coverdWriterId = writerId !=='' && (writerId[0] + '*'.repeat(writerId.length-1));
   return (
@@ -203,12 +208,12 @@ export default function QnaDetail()
         <div className='qna-detail-comment'>{comment}</div>
       </div>} 
       <div className='qna-detail-button-box'>
-        <div className='primary-button' onClick={onListClickHandler}>목록보기</div> //!!!복습완료
-        {loginUserId === writerId && loginUserRole === 'ROLE_USER' && //!!!복습완료
+        <div className='primary-button' onClick={onListClickHandler}>목록보기</div> 
+        {loginUserId === writerId && loginUserRole === 'ROLE_USER' && 
         <div className='qna-detail-owner-button-box'>
           {!status &&
-          <div className='second-button' onClick={onUpdateClickHandler}>수정</div>} //???
-          <div className='error-button' onClick={onDeleteClickHandler}>삭제</div> //???
+          <div className='second-button' onClick={onUpdateClickHandler}>수정</div>} 
+          <div className='error-button' onClick={onDeleteClickHandler}>삭제</div>
         </div>}
       </div>
     </div>

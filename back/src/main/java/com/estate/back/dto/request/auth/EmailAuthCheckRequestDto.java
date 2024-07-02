@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+//  이메일 인증 확인 Request Body Dto
 
-    //  이메일 인증 확인 Request Body Dto
 @Getter
 @Setter
 @NoArgsConstructor

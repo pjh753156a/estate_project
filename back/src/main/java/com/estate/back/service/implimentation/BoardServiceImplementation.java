@@ -17,15 +17,14 @@ import com.estate.back.repository.BoardRepository;
 import com.estate.back.repository.UserRepository;
 import com.estate.back.service.BoardService;
 
-import jakarta.el.ELException;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 public class BoardServiceImplementation implements BoardService
 {
-    private final BoardRepository boardRepository;
     private final UserRepository userRepository;
+    private final BoardRepository boardRepository;
 
     @Override
     public ResponseEntity<ResponseDto> postBoard(PostBoardRequestDto dto, String userId) 
@@ -100,28 +99,28 @@ public class BoardServiceImplementation implements BoardService
     @Override
     public ResponseEntity<ResponseDto> increaseViewCount(int receptionNumber) 
     {
-       try
-       {
+        try
+        {
             BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
             if(boardEntity == null) return ResponseDto.noExistBoard();
 
             boardEntity.increaseViewCount();
             boardRepository.save(boardEntity);
-       }
-       catch(Exception exception)
-       {
+        }
+        catch(Exception exception)
+        {
             exception.printStackTrace();
             return ResponseDto.databaseError();
-       }
+        }
 
-       return ResponseDto.success();
+        return ResponseDto.success();
     }
 
     @Override
     public ResponseEntity<ResponseDto> postComment(PostCommentRequestDto dto, int receptionNumber) 
     {
-       try
-       {
+        try
+        {
             BoardEntity boardEntity = boardRepository.findByReceptionNumber(receptionNumber);
             if(boardEntity == null) return ResponseDto.noExistBoard();
 
@@ -133,14 +132,14 @@ public class BoardServiceImplementation implements BoardService
             boardEntity.setComment(comment);
 
             boardRepository.save(boardEntity);
-       }
-       catch(Exception exception)
-       {
+        }
+        catch(Exception exception)
+        {
             exception.printStackTrace();
             return ResponseDto.databaseError();
-       }
+        }
 
-       return ResponseDto.success();
+        return ResponseDto.success();
     }
 
     @Override
@@ -181,8 +180,8 @@ public class BoardServiceImplementation implements BoardService
             boolean status = boardEntity.getStatus();
             if(status) return ResponseDto.writtenComment();
 
-           boardEntity.update(dto);
-           boardRepository.save(boardEntity);
+            boardEntity.update(dto);
+            boardRepository.save(boardEntity);
         }
         catch(Exception exception)
         {

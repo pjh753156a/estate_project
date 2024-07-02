@@ -1,11 +1,15 @@
-import { CategoryScale, Chart as ChartJS, LineElement, LinearScale, PointElement, Tooltip } from 'chart.js';
 import { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { useCookies } from 'react-cookie';
-import { getLocalDataRequest } from 'src/apis/estate';
-import { GetLocalDataResponseDto } from 'src/apis/estate/dto/response';
-import ResponseDto from 'src/apis/response.dto';
+
 import SelectBox from 'src/components/Selectbox';
+import { CategoryScale, Chart as ChartJS, LineElement, LinearScale, PointElement, Tooltip } from 'chart.js';
+
+import ResponseDto from 'src/apis/response.dto';
+import { GetLocalDataResponseDto } from 'src/apis/estate/dto/response';
+
+import { getLocalDataRequest } from 'src/apis/estate';
+
 import './style.css';
 
 ChartJS.register(
@@ -19,26 +23,25 @@ ChartJS.register(
 //                    component                    //
 export default function Local() {
 
-    
     const saleOptions = {
         responsive: false,
     };
-   
+
     const leaseOptions = {
         responsive: false,
     };
-   
+
     const monthRentOptions = {
         responsive: false,
     };
-   
+
     //                    state                    //
-    const [selectLocal, setSelectLocal] = useState<string>('');
     const[cookies] = useCookies();
-    const[yearMonth,setYearMonth] =useState<string[]>([]);
     const[sale,setSale] = useState<number[]>([]);
     const[lease,setLease] = useState<number[]>([]);
+    const[yearMonth,setYearMonth] =useState<string[]>([]);
     const[monthRent,setMonthRent] = useState<number[]>([]);
+    const [selectLocal, setSelectLocal] = useState<string>('');
     
     //                      function                    //
     const getLocalDataResponse = (result:GetLocalDataResponseDto|ResponseDto|null) => 
@@ -150,4 +153,3 @@ export default function Local() {
         </div>
     );
 }
-//!!!복습완료

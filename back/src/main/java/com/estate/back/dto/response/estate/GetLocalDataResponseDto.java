@@ -17,10 +17,10 @@ import lombok.Getter;
 @Getter
 public class GetLocalDataResponseDto extends ResponseDto
 {
-    private List<String> yearMonth;
     private List<Integer> sale;
     private List<Integer> lease;
     private List<Integer> monthRent;
+    private List<String> yearMonth;
  
     private  GetLocalDataResponseDto (List<GetLocalDataResultSet> resultSets) throws Exception 
     {
@@ -52,6 +52,4 @@ public class GetLocalDataResponseDto extends ResponseDto
         GetLocalDataResponseDto responseBody = new GetLocalDataResponseDto(resultSets);
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
-
 }
-//!!!복습완료

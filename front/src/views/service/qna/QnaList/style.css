@@ -6,13 +6,11 @@
     gap: 16px;
 }
 
-
 .qna-list-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
-
 
 .qna-list-size-text {
     font-size: 16px;
@@ -21,18 +19,15 @@
     color: rgba(138, 146, 166, 1);
 }
 
-
 .qna-list-size-text .emphasis {
     color: rgba(64, 64, 64, 1);
 }
-
 
 .qna-list-top-right {
     display: flex;
     align-items: center;
     gap: 12px;
 }
-
 
 .qna-list-top-admin-text {
     font-size: 14px;
@@ -52,7 +47,6 @@
     background-color: rgba(255, 255, 255, 1);
 }
 
-
 .qna-list-table-th {
     display: flex;
     align-items: center;
@@ -65,8 +59,6 @@
 
     color:rgba(64, 64, 64, 1);
 }
-
-
 
 .qna-list-table-tr {
     display: flex;
@@ -89,7 +81,6 @@
     background-color: rgba(238, 238, 238, 0.2);
 }
 
-
 .qna-list-table-reception-number
 {
     width: 56px;
@@ -106,7 +97,6 @@
     white-space: nowrap;
 }
 
-
 .qna-list-table-writer-id
 {
     width:67px;
@@ -114,7 +104,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
 
 .qna-list-table-write-date{
     width: 54px;
@@ -134,7 +123,6 @@
     align-items: center;
     gap:24px;
 }
-
 
 .qna-list-page-left{
     width: 40px;
