@@ -26,7 +26,8 @@ function Index()
   const navigator = useNavigate();
 
   // effect //
-  useEffect(() => {
+  useEffect(() => 
+  {
     const accessToken = cookies.accessToken;
     if (accessToken) navigator(LOCAL_ABSOLUTE_PATH);
     else navigator(AUTH_ABSOLUTE_PATH);
@@ -73,4 +74,4 @@ export default App;
       - write (QnA 작성)
       - update/:boardNumber (QnA 수정)
 */
-{/* 예습 */}
+{/* // */}

@@ -6,4 +6,4 @@ export interface GetSignInUserResponseDto extends ResponseDto
     userId: string;
     userRole: string;
 }
-/* 예습 */
+/* // */

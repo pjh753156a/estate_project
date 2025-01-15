@@ -235,4 +235,4 @@ export default function Ratio() {
         </div>
     )
 }
-/* 예습 */
+{/* // */}

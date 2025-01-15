@@ -6,4 +6,4 @@ export default function NotFound()
     <div>NotFound</div>
   )
 }
-{/* /* 예습 */}
+{/* // */}

@@ -35,4 +35,4 @@ public class UserEntity
         this.joinPath = "HOME";
     }
 }
-//예습
+/* // */

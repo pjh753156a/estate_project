@@ -31,4 +31,4 @@ public class GetSearchBoardListResponseDto extends ResponseDto
         return ResponseEntity.status(HttpStatus.OK).body(resposeBody);
     }
 }
-/* 예습 */
+/* // */

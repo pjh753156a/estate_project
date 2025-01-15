@@ -22,4 +22,4 @@ export const getRatioDataRequest = async (local:string,accessToken:string) =>
         .catch(requestErrorHandler);
     return result;
 };
-/* 예습 */
+{/* // */}

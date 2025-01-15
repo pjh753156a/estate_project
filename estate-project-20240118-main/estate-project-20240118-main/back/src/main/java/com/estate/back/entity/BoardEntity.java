@@ -62,4 +62,4 @@ public class BoardEntity
         this.contents=dto.getContents();
     }
 }
-/* 예습 */
+/* // */

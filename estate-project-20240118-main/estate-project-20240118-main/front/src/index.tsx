@@ -14,4 +14,4 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-/* 예습 */
+//

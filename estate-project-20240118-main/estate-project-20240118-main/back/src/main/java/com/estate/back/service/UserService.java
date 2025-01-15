@@ -8,4 +8,4 @@ public interface UserService
 {
     ResponseEntity<? super GetSignInUserResponseDto> getSignInUser (String userId);
 }
-/* 예습 */
+/* // */

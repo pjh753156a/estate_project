@@ -49,7 +49,7 @@ public class ResponseDto
             new ResponseDto(ResponseCode.NO_EXIST_BOARD ,ResponseMessage.NO_EXIST_BOARD);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(responseBody);
     }
-    
+
     public static ResponseEntity<ResponseDto> writtenComment()
     {
         ResponseDto responseBody = 
@@ -70,7 +70,7 @@ public class ResponseDto
             new ResponseDto(ResponseCode.AUTHENTICATION_FAILED,ResponseMessage.AUTHENTICATION_FAILED);
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(responseBody);
     }
-    
+
     public static ResponseEntity<ResponseDto> authorizationFailed()
     {
         ResponseDto responseBody = 
@@ -106,4 +106,4 @@ public class ResponseDto
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(responseBody);
     }
 }
-//예습
+/* // */

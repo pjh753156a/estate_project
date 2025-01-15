@@ -27,4 +27,4 @@ public interface ResponseCode
     String TOKEN_CREATION_FAILED="TF";
     String AUTHORIZATION_FAILED = "AF";
 }
-/* 예습 */
+/* // */

@@ -27,4 +27,4 @@ public interface ResponseMessage
     String AUTHENTICATION_FAILED="Authentication Failed.";
     String AUTHORIZATION_FAILED = "Authorization Failed.";
 }
-/* 예습 */
+/* // */

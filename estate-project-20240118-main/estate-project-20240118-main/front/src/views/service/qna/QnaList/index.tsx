@@ -97,22 +97,26 @@ export default function QnaList()
     };
     
     //                event handler                    //
-    const onWriteButtonClickHandler = () => {
+    const onWriteButtonClickHandler = () => 
+    {
         if (loginUserRole !== 'ROLE_USER') return;
         navigator(QNA_WRITE_ABSOLUTE_PATH);
     };
     
-    const onToggleClickHandler = () => {
+    const onToggleClickHandler = () => 
+    {
         if (loginUserRole !== 'ROLE_ADMIN') return;
         setToggleOn(!isToggleOn);
     };
     
-    const onSearchWordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const onSearchWordChangeHandler = (event: ChangeEvent<HTMLInputElement>) => 
+    {
         const searchWord = event.target.value;
         setSearchWord(searchWord);
     };
     
-    const onSearchButtonClickHandler = () => {
+    const onSearchButtonClickHandler = () => 
+    {
         if (!searchWord) return;
         if (!cookies.accessToken) return;
 
@@ -177,4 +181,4 @@ export default function QnaList()
         </div>
     );
 }
-{/* /* 예습 */}
+{/* // */}

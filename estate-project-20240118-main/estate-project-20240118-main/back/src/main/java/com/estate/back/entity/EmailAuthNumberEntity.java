@@ -21,4 +21,4 @@ public class EmailAuthNumberEntity
     private String email;
     private String authNumber;
 }
-/* 예습 */
+/* // */

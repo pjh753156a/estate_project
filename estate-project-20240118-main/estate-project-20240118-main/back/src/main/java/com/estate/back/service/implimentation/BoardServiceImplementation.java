@@ -219,4 +219,4 @@ public class BoardServiceImplementation implements BoardService
 // 2.1 데이터베이스 오류가 발생하면 'DBE'응답 처리
 
 // 3. 'SU'응답 처리
-/* 예습 */
+/* // */

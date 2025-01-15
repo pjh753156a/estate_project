@@ -27,4 +27,4 @@ export interface GetRatioDataResponseDto extends ResponseDto
     monthRentRatio6085:number[];
     monthRentRatio85:number[];
 }
-/* 예습 */
+/* // */

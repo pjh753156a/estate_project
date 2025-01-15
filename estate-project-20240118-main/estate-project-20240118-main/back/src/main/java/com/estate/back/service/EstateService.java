@@ -9,4 +9,4 @@ public interface EstateService {
     ResponseEntity<? super GetLocalDataResponseDto> getLocalData(String local);
     ResponseEntity<? super GetRatioDataResponseDto> getRatioData(String local);
 }
-/* 예습 */
+/* // */

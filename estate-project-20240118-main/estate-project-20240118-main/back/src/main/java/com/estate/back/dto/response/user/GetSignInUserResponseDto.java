@@ -29,4 +29,4 @@ public class GetSignInUserResponseDto extends ResponseDto
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 }
-/* 예습 */
+/* // */

@@ -15,4 +15,4 @@ export interface PutBoardRequestDto
     title:string;
     contents:string;
 }
-{/* 예습 */}
+/* // */

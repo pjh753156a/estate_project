@@ -1,4 +1,4 @@
--- Active: 1734198927927@@127.0.0.1@3306@estate
+-- Active: 1735318986629@@127.0.0.1@3306@estate
 
 # Entity
 # - 사용자
@@ -107,4 +107,4 @@ CREATE TABLE `estate` (
     `month_rent_ratio85` DOUBLE
 );
 
-### /* 예습 */
+### //

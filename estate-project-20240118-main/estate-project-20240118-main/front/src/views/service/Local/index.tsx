@@ -59,6 +59,7 @@ export default function Local() {
         } 
 
         const {yearMonth, sale, lease, monthRent} = result as GetLocalDataResponseDto;
+        
         setYearMonth(yearMonth);
         setSale(sale);
         setLease(lease);
@@ -155,4 +156,4 @@ export default function Local() {
         </div>
     );
 }
-{/* /* 예습 */}
+{/* // */}

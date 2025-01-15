@@ -47,7 +47,8 @@ public class AuthController
     @PostMapping("/email-auth")
     public ResponseEntity<ResponseDto> emailAuth(
         @RequestBody @Valid EmailAuthRequestDto requestBody
-    ){
+    )
+    {
         ResponseEntity<ResponseDto> response = authService.emailAuth(requestBody);
         return response;
     }
@@ -70,4 +71,4 @@ public class AuthController
         return response;
     }
 }
-/* /* 예습 */
+/* // */

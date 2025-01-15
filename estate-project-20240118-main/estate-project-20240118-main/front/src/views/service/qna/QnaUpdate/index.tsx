@@ -89,7 +89,8 @@ export default function QnaUpdate()
       setTitle(title);
   };
   
-  const onContentsChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const onContentsChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => 
+  {
       const contents = event.target.value;
       if(contents.length>1000) return;
       setContents(contents);
@@ -145,4 +146,4 @@ export default function QnaUpdate()
     </div>
   )
 }
-{/* /* 예습 */}
+{/* // */}

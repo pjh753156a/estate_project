@@ -16,4 +16,4 @@ public interface GetRatioDataResultSet
     Double getMonthRentRatio6085();
     Double getMonthRentRatio85();
 }
-/* 예습 */
+/* // */

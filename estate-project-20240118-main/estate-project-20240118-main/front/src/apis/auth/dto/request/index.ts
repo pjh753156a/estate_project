@@ -32,4 +32,4 @@ export interface SignUpRequestDto
     userEmail: string;
     authNumber: string;
 }
-/* /* 예습 */
+{/* // */}

@@ -78,4 +78,4 @@ export const deleteBoardRequest = async (receptionNumber: number|string, accessT
         .catch(requestErrorHandler);
     return result;
 };
-{/* 예습 */}
+{/* // */}

@@ -21,4 +21,4 @@ public interface BoardService
     ResponseEntity<ResponseDto> deleteBoard(int receptionNumber,String userId);
     ResponseEntity<ResponseDto> putBoard(PutBoardRequestDto dto, int receptionNumber, String userId);
 }
-/* 예습 */
+/* // */

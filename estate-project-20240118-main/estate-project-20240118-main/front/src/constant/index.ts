@@ -54,4 +54,4 @@ export const GET_RATIO_DATA_URL = (local:string) => `${SERVER_ESTATE_MODULE_URL}
 // description: 게시물 상수
 export const COUNT_PER_PAGE = 4;
 export const COUNT_PER_SECTION = 2;
-{/* 예습 */}
+//

@@ -18,10 +18,12 @@ export interface InputBoxProps
 
 export default function InputBox({ label, type, value, placeholder, onChangeHandler, buttonTitle, buttonStatus, onButtonClickHandler, message, error,onKeydownHandler }: InputBoxProps) 
 {
-// <InputBox label="비밀번호" type="password" 
-// value={password} placeholder="비밀번호를 입력해주세요" 
-// onKeydownHandler={onPasswordKeydownHandler}
-// onChangeHandler={onPasswordChangeHandler} message={message} error />
+// <InputBox label="이메일" type="text" 
+// value={email} placeholder="이메일을 입력해주세요" 
+// onChangeHandler={onEmailChangeHandler} 
+// buttonTitle="이메일 인증" buttonStatus={emailButtonStatus} 
+// onButtonClickHandler={onEmailButtonClickHandler} 
+// message={emailMessage} error={isEmailError} />
 
     const buttonClass = buttonStatus ? 'input-primary-button' : 'input-disable-button';
     const messageClass = 'input-message ' + (error ? 'error' : 'primary');
@@ -50,4 +52,4 @@ export default function InputBox({ label, type, value, placeholder, onChangeHand
         </div>
     );
 }
-{/* /* 예습 */}
+{/* // */}

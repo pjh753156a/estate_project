@@ -18,4 +18,4 @@ public interface AuthService
     ResponseEntity<? super SignInResponseDto> signIn (SignInRequestDto dto);
     ResponseEntity<ResponseDto> emailAuthCheck(EmailAuthCheckRequestDto dto);
 }
-//예습
+/* // */

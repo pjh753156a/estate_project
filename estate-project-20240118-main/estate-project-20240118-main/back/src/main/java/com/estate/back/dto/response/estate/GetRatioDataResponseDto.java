@@ -34,7 +34,8 @@ public class GetRatioDataResponseDto extends ResponseDto  {
     private List<Double> monthRentRatio6085;
     private List<Double> monthRentRatio85;
    
-    private GetRatioDataResponseDto (List<GetRatioDataResultSet> resultSets) throws Exception {
+    private GetRatioDataResponseDto (List<GetRatioDataResultSet> resultSets) throws Exception 
+    {
         super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
         this.yearMonth = new ArrayList<>();
         this.return40 = new ArrayList<>();
@@ -53,7 +54,7 @@ public class GetRatioDataResponseDto extends ResponseDto  {
         for (GetRatioDataResultSet resultSet: resultSets) {
             String originalDate = resultSet.getYearMonth();
             this.yearMonth.add(ChangeDateFormatUtil.changeYYMM(originalDate));
-
+            
             this.return40.add(resultSet.getReturn40());
             this.return4060.add(resultSet.getReturn4060());
             this.return6085.add(resultSet.getReturn6085());
@@ -71,9 +72,10 @@ public class GetRatioDataResponseDto extends ResponseDto  {
         }
     }
     
-    public static ResponseEntity<GetRatioDataResponseDto> success (List<GetRatioDataResultSet> resultSets) throws Exception {
+    public static ResponseEntity<GetRatioDataResponseDto> success (List<GetRatioDataResultSet> resultSets) throws Exception 
+    {
         GetRatioDataResponseDto responseBody = new GetRatioDataResponseDto(resultSets);
         return ResponseEntity.status(HttpStatus.OK).body(responseBody);
     }
 }
-/* 예습 */
+/* // */

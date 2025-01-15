@@ -12,7 +12,8 @@ import com.estate.back.repository.resultSet.GetLocalDataResultSet;
 import com.estate.back.repository.resultSet.GetRatioDataResultSet;
 
 @Repository
-public interface EstateRepository extends JpaRepository<EstateEntity, Integer> {    
+public interface EstateRepository extends JpaRepository<EstateEntity, Integer> 
+{    
     @Query(value=
     "SELECT `year_month` as yearMonth, sale, lease, month_rent as monthRent " +
     "FROM estate " +
@@ -40,4 +41,4 @@ public interface EstateRepository extends JpaRepository<EstateEntity, Integer> {
     )
     List<GetRatioDataResultSet> getRatioData(@Param("local") String local);
 }
-/* 예습 */
+/* // */

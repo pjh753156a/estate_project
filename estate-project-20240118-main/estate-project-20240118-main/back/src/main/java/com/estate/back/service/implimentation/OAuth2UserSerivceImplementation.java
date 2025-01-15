@@ -31,6 +31,7 @@ public class OAuth2UserSerivceImplementation extends DefaultOAuth2UserService
     {
 
         OAuth2User oAuth2User = super.loadUser(userRequest);
+
         String oauthClientName =
             userRequest.getClientRegistration().getClientName().toUpperCase();
 
@@ -47,6 +48,7 @@ public class OAuth2UserSerivceImplementation extends DefaultOAuth2UserService
         // }
 
         String id = getId(oAuth2User, oauthClientName);
+        
         // KAKAO_3458614205
         // NAVER_NI6yT9BOTq
         String userId = oauthClientName + "_" + id.substring(0,10);
@@ -87,4 +89,4 @@ public class OAuth2UserSerivceImplementation extends DefaultOAuth2UserService
         return id;
     }
 }
-/* 예습 */
+/* // */

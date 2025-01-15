@@ -25,4 +25,4 @@ public class SignUpRequestDto
     @NotBlank
     private String authNumber;
 }
-/* /* 예습 */
+/* // */

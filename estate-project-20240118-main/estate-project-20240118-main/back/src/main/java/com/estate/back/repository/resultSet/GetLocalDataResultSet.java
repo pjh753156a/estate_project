@@ -7,4 +7,4 @@ public interface GetLocalDataResultSet
     Integer getMonthRent();
     String getYearMonth();
 }
-/* 예습 */
+/* // */

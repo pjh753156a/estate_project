@@ -44,10 +44,10 @@ export default function SelectBox({ value, onChange }: Prop)
         onChange(value);
         setShow(false);
     };
-    
-    // name = 수도권
+
+    // name = 전국
     // show = false
-    // value = selectLocal = 'CAPITAL_AREA'
+    // value = selectLocal = NATIONWIDE
     // buttonClass = 'select-open-button'
     //                    render                    //
     const buttonClass = show ? 'select-close-button' : 'select-open-button';
@@ -70,4 +70,4 @@ export default function SelectBox({ value, onChange }: Prop)
         </div>
     );
 }
-{/* /* 예습 */}
+{/* // */}

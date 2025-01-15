@@ -45,6 +45,7 @@ interface SnsContainerProps
 //                    component                    //
 function SnsContainer({ title }: SnsContainerProps) 
 {
+    
     //                    event handler                    //
     const onSnsButtonClickHandler = (type: 'kakao' | 'naver') => 
     {
@@ -385,6 +386,7 @@ function SignUp({ onLinkClickHandler }: Props)
     //                    render                    //
     return (
         <div className="authentication-contents">
+            
             <SnsContainer title="SNS 회원가입" />
             <div className="short-divider"></div>
             <div className="authentication-input-container">
@@ -396,6 +398,7 @@ function SignUp({ onLinkClickHandler }: Props)
                 <InputBox label="비밀번호 확인" type="password" value={passwordCheck} placeholder="비밀번호를 입력해주세요" onChangeHandler={onPasswordCheckChangeHandler} message={passwordCheckMessage} error />
                 
                 <InputBox label="이메일" type="text" value={email} placeholder="이메일을 입력해주세요" onChangeHandler={onEmailChangeHandler} buttonTitle="이메일 인증" buttonStatus={emailButtonStatus} onButtonClickHandler={onEmailButtonClickHandler} message={emailMessage} error={isEmailError} />
+            
                 {isEmailCheck &&
                 <InputBox label="인증번호" type="text"
                 value={authNumber} placeholder="인증번호 4자리를 입력해주세요"
@@ -404,6 +407,7 @@ function SignUp({ onLinkClickHandler }: Props)
                 onButtonClickHandler={onAuthNumberButtonClickHandler}
                 message={authNumberMessage} error={isAuthNumberError} />}
             </div>
+    
             <div className="authentication-button-container">
                 <div className={signUpButtonClass} onClick={onSignUpButtonClickHandler}>회원가입</div>
                 <div className="text-link" onClick={onLinkClickHandler}>로그인</div>
@@ -417,7 +421,7 @@ export default function Authentication()
 {
     //                    state                    //
     const [page, setPage] = useState<AuthPage>('sign-in');
-    // page = sign-in
+    // page = sign-up
     
     //                    event handler                    //
     const onLinkClickHandler = () => 
@@ -449,4 +453,4 @@ export default function Authentication()
         </div>
     );
 }
-{/* /* 예습 */}
+{/* // */}

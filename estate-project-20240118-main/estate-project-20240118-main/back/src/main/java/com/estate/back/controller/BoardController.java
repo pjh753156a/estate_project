@@ -40,7 +40,7 @@ public class BoardController
         ResponseEntity<ResponseDto> response = boardService.postBoard(requestBody, userId);
         return response;
     }
-    
+
     @PostMapping("/{receptionNumber}/comment")
     public ResponseEntity<ResponseDto> postComment(
         @RequestBody @Valid PostCommentRequestDto requestBody,
@@ -101,4 +101,4 @@ public class BoardController
         return response;
     }
 }
-/* 예습 */
+/* // */

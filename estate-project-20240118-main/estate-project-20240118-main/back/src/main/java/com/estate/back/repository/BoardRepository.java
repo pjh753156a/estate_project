@@ -17,4 +17,4 @@ public interface BoardRepository extends JpaRepository<BoardEntity,Integer>
     List<BoardEntity> findByTitleContainsOrderByReceptionNumberDesc(String title);
     BoardEntity findByReceptionNumber(Integer receptionNumber);
 }
-/* 예습 */
+/* // */

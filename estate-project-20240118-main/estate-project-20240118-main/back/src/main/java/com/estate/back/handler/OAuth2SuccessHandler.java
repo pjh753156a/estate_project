@@ -34,4 +34,4 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler
         response.sendRedirect("http://localhost:3000/sns/"+token+"/36000");
     }
 }
-/* 예습 */
+/* // */

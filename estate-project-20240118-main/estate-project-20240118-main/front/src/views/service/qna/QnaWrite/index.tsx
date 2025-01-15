@@ -27,8 +27,8 @@ export default function  QnaWrite()
   //                function                    //
   const navigator = useNavigate();
   
-  const postBoardResponse = (result: ResponseDto | null) => {
-
+  const postBoardResponse = (result: ResponseDto | null) => 
+  {
     const message =
       !result ? '서버에 문제가 있습니다.' :
       result.code === 'VF' ? '제목과 내용을 모두 입력해주세요.' :
@@ -51,7 +51,8 @@ export default function  QnaWrite()
       setTitle(title);
   };
   
-  const onContentsChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+  const onContentsChangeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => 
+  {
       const contents = event.target.value;
       if(contents.length>1000) return;
       setContents(contents);
@@ -101,4 +102,4 @@ export default function  QnaWrite()
     </div>
   );
 }
-{/* 예습 */}
+/* // */

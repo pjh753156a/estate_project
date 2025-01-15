@@ -13,4 +13,4 @@ public class PostCommentRequestDto
     @NotBlank
     private String comment;
 }
-/* 예습 */
+/* // */

@@ -13,4 +13,4 @@ export const getSignInUserRequest = async (accessToken: string) =>
         .catch(requestErrorHandler);
     return result;
 };
-/* 예습 */
+/* // */

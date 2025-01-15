@@ -51,7 +51,8 @@
     margin-bottom: 4px;
 }
 
-.input-primary-button {
+.input-primary-button 
+{
     box-sizing: border-box;
     width: 110px;
     padding: 8px 0px;
@@ -69,11 +70,13 @@
     text-align: center;
 }
 
-.input-primary-button:hover {
+.input-primary-button:hover 
+{
     cursor: pointer;
 }
 
-.input-disable-button {
+.input-disable-button 
+{
     box-sizing: border-box;
     width: 110px;
     padding: 8px 0px;
@@ -91,10 +94,11 @@
     text-align: center;
 }
 
-.input-message {
+.input-message 
+{
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
-/*예습*/
+/* // */

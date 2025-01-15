@@ -1,4 +1,5 @@
-export interface BoardListItem{
+export interface BoardListItem
+{
     title: string;
     writerId: string;
     writeDatetime: string;
@@ -6,4 +7,4 @@ export interface BoardListItem{
     viewCount: number;
     receptionNumber: number;
 }
-{/* /* 예습 */}
+{/* // */}

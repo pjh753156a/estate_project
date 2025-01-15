@@ -131,7 +131,8 @@ export default function QnaDetail()
   };
   
   //            event handler            //
-  const onCommentChangeHandler = (event:ChangeEvent<HTMLTextAreaElement>) => {
+  const onCommentChangeHandler = (event:ChangeEvent<HTMLTextAreaElement>) => 
+  {
     if(status || loginUserRole !== 'ROLE_ADMIN') return;
     const comment = event.target.value;
     setComment(comment);
@@ -140,7 +141,8 @@ export default function QnaDetail()
     setCommentRows(commentRows);
   };
   
-  const onCommentSubmitClickHandler = () => {
+  const onCommentSubmitClickHandler = () => 
+  {
     if(!comment || !comment.trim() || loginUserRole !== 'ROLE_ADMIN' || !cookies.accessToken)
     return;
     if(!receptionNumber) return;
@@ -174,7 +176,7 @@ export default function QnaDetail()
     if(!cookies.accessToken || !receptionNumber) return;
     increaseViewCountRequest(receptionNumber,cookies.accessToken).then(increaseViewCountResponse);
   },[]);
-
+  
   //           render            //
   const coverdWriterId = writerId !=='' && (writerId[0] + '*'.repeat(writerId.length-1));
   
@@ -209,7 +211,7 @@ export default function QnaDetail()
         <div className='qna-detail-comment'>{comment}</div>
       </div>}
       <div className='qna-detail-button-box'>
-        <div className='primary-button' onClick={onListClickHandler}>목록보기</div> 
+        <div className='primary-button' onClick={onListClickHandler}>목록보기</div>
         {loginUserId === writerId && loginUserRole === 'ROLE_USER' &&
         <div className='qna-detail-owner-button-box'>
           {!status &&
@@ -220,4 +222,4 @@ export default function QnaDetail()
     </div>
   )
 }
-{/* 예습 */}
+{/* // */}

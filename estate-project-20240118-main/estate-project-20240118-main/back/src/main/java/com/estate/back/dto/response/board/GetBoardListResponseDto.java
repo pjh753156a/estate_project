@@ -36,4 +36,4 @@ public class GetBoardListResponseDto extends ResponseDto
 // FROM board
 // ORDER BY reception_number DESC;
 // findByOrderByReceptionNumberDesc();
-/* 예습 */
+/* // */

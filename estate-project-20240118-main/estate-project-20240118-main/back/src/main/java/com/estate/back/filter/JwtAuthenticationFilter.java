@@ -86,8 +86,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter
             exception.printStackTrace();
         }
 
-        filterChain.doFilter(request, response);
-                
+        filterChain.doFilter(request, response);                
     }
     
     // Request 객체에서 Bearer 토큰 값을 가져오는 메서드
@@ -107,4 +106,4 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter
         return token;
     }
 }
-/* 예습 */
+/* // */

@@ -46,4 +46,4 @@ public class BoardListItem
         return boardList;
     }
 }
-/* 예습 */
+/* // */

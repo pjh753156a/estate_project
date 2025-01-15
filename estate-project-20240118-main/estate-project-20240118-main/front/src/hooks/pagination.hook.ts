@@ -46,11 +46,11 @@ const usePagination = <T>(countPerPage: number, countPerSection: number) => {
         const totalLenght = boardList.length;
         setTotalLength(totalLenght);
         
-        //  totalPage   =    4
+        //  totalPage   =    4 
         const totalPage = Math.floor((totalLenght - 1) / countPerPage) + 1;
         setTotalPage(totalPage);
         
-        //  totalSection    =  2
+        //  totalSection    =  2 
         const totalSection = Math.floor((totalPage - 1) / countPerSection) + 1;
         setTotalSection(totalSection);
         
@@ -61,20 +61,22 @@ const usePagination = <T>(countPerPage: number, countPerSection: number) => {
     const onPageClickHandler = (page: number) => {
         setCurrentPage(page);
     };
-   
+    
     const onPreSectionClickHandler = () => {
         if (currentSection <= 1) return;
         setCurrentSection(currentSection - 1);
         setCurrentPage((currentSection - 1) * countPerSection);
     };
     
-    const onNextSectionClickHandler = () => {
+    const onNextSectionClickHandler = () => 
+    {
         if (currentSection === totalSection) return;
         setCurrentSection(currentSection + 1);
         setCurrentPage(currentSection * countPerSection + 1);
     }; 
     
-    useEffect(() => {
+    useEffect(() => 
+    {
         if (!boardList.length) return;
         changePage(boardList, totalLenght);
     }, [currentPage]);
@@ -103,4 +105,4 @@ const usePagination = <T>(countPerPage: number, countPerSection: number) => {
 }
 
 export default usePagination;
-/* 예습 */
+/* // */

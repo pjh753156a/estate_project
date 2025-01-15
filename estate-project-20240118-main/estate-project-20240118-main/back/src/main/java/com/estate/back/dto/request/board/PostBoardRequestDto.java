@@ -15,4 +15,4 @@ public class PostBoardRequestDto
     @NotBlank
     private String contents;
 }
-/* 예습 */
+/* // */

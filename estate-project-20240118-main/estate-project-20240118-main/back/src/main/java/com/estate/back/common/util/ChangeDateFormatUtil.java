@@ -25,11 +25,11 @@ public class ChangeDateFormatUtil
     
     public static String changeYYMM(String original) throws Exception
     {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date datetime = simpleDateFormat.parse(original);
         simpleDateFormat = new SimpleDateFormat("yy-MM");
         String writeDatetime = simpleDateFormat.format(datetime);
         return writeDatetime;
     }
 }
-/* 예습 */
+/* // */

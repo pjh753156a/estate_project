@@ -103,6 +103,5 @@ class AuthorizationFailEntryPoint implements AuthenticationEntryPoint
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.getWriter().write("{\"code\":\"AF\",\"message\":\"Authorization Failed\"}");
     }
-    
 }
-/* 예습 */
+/* // */
